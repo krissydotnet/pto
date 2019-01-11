@@ -70,6 +70,19 @@ namespace DataLayer
             string query = "SELECT userid, name, admin FROM Users where active=1";
             return runQuery(query);
         }
+
+        public DataTable Report_EmployeeBalance()
+        {
+            string query = "SELECT Users.name, Users.total_pto - Users.used_pto AS balance_pto, " +
+                           " (SELECT MIN(PTORequests.start_date) " +
+                           " FROM PTORequests " +
+                           " WHERE PTORequests.userid = Users.userid " + 
+                           " AND PTORequests.start_date >= GetDate() " +
+                           ") as Next " +
+                           " FROM Users INNER JOIN " +
+                           " PTORequests ON Users.userid = PTORequests.userid";
+            return runQuery(query);
+        }
         public DataTable Report_EmployeeDetail(int userid)
         {
             string query = "SELECT PTORequests.start_date, PTORequests.end_date, TimeOffType.description, TimeOffType.credit, PTORequests.hours " +

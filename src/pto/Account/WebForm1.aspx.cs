@@ -34,9 +34,14 @@ namespace pto.Account
 
             */
 
-
+            /*
             gvReport.DataSource = data.Report_EmployeeDetail(1);
             gvReport.DataBind();
+            */
+
+            gvReport.DataSource = data.Report_EmployeeBalance();
+            gvReport.DataBind();
+
             if (data.error)
             {
                 Response.Write(data.errorMessage);
