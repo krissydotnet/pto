@@ -1,5 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RequestTimeOff.aspx.cs" Inherits="pto.Users.RequestTimeOff" %>
 
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+        <link href="../Content/themes/base/jquery-ui.min.css" rel="stylesheet" /> 
+        <script src="../Scripts/jquery-3.3.1.min.js"></script>
+        <script src="../Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="../Scripts/RequestTimeOff.js"></script>
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-md-8">
@@ -9,14 +15,14 @@
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="ptoFrom" CssClass="col-md-2 control-label">From *</asp:Label>
                         <div class="col-md-10">
-                            <asp:TextBox ID="ptoFrom" runat="server"></asp:TextBox>
-                        
+                            <asp:TextBox ID="ptoFrom" CssClass="ptoFrom" runat="server"></asp:TextBox>
+
                         </div>
                     </div>
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="ptoTo" CssClass="col-md-2 control-label">To *</asp:Label>
                         <div class="col-md-10">
-                            <asp:TextBox ID="ptoTo" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="ptoTo" CssClass="ptoFrom" runat="server"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
