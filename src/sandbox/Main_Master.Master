@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main_Master.master.cs" Inherits="sandbox.Main_Master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="css/styles.css" rel="stylesheet" />
+  
+</head>
+<body>
+    <form id="form1" runat="server">
+        <span style="font-size: 30px;cursor:pointer" onclick="openNavmenu()">&#9776; Menu</span>
+        <div class="sidenavmenu" id="mySidenavmenu">
+            <a href="#" onclick="closeNav()">X</a>
+            <a href="Default.aspx">Home</a>
+            <a href="About.aspx">About</a>
+            <a href="Service.aspx">Service</a>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <script type="text/javascript" src="js/js.js"></script>
+</body>
+</html>

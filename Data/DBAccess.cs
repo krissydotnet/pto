@@ -64,32 +64,45 @@ namespace DataLayer
                     con.Close();
             }
         }
-        
         public DataTable GetUsers()
         {
             string query = "SELECT userid, name, admin FROM Users where active=1";
             return runQuery(query);
         }
+        public DataTable GetTimeOffType()
+        {
+            string query = "SELECT typeid, description FROM TimeOffType where credit=0";
+            return runQuery(query);
+        }
 
         public DataTable Report_EmployeeBalance()
         {
-            string query = "SELECT Users.name, Users.total_pto - Users.used_pto AS balance_pto, " +
-                           " (SELECT MIN(PTORequests.start_date) " +
-                           " FROM PTORequests " +
-                           " WHERE PTORequests.userid = Users.userid " + 
-                           " AND PTORequests.start_date >= GetDate() " +
-                           ") as Next " +
-                           " FROM Users INNER JOIN " +
-                           " PTORequests ON Users.userid = PTORequests.userid";
+            string subquery = "SELECT A.userid, A.Id, MIN(A.start_date) AS next_pto " +
+                           " FROM PTORequests A INNER JOIN " +
+                           " TimeOffType B ON A.typeid = B.typeid " +
+                           " AND A.start_date >= GetDate() " +
+                           " AND B.credit = 0 " +
+                           " GROUP BY A.userid, A.Id ";
+                
+
+            string query = "SELECT C.userid, C.name, C.total_pto - C.used_pto AS balance_pto, E.start_date, E.end_date, E.hours, E.comments " +
+                           " FROM Users C LEFT OUTER JOIN " + 
+                           " (" + subquery + ") D  ON " +
+                           " C.userid = D.userid LEFT OUTER JOIN " +
+                           " PTORequests E ON E.Id = D.Id " ;
+
+            
             return runQuery(query);
         }
+
         public DataTable Report_EmployeeDetail(int userid)
         {
             string query = "SELECT PTORequests.start_date, PTORequests.end_date, TimeOffType.description, TimeOffType.credit, PTORequests.hours " +
                           " FROM PTORequests INNER JOIN " +
                           " TimeOffType ON PTORequests.typeid = TimeOffType.typeid INNER JOIN " +
                           " Users ON PTORequests.userid = Users.userid " + 
-                          " WHERE Users.userid=" + userid;
+                          " WHERE Users.userid=" + userid +
+                          " ORDER BY PTORequests.start_date, TimeOffType.description ";
 
             return runQuery(query);
         }

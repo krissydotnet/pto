@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace pto
+namespace sandbox
 {
 
 
-    public partial class Contact
+    public partial class Default
     {
     }
 }
