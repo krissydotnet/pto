@@ -12,6 +12,7 @@ body {
     font-family: var(--primary-font);
     margin: 0;
     box-sizing: border-box;
+   
 }
 
 
@@ -25,24 +26,22 @@ body {
     font-weight: 800;
     font-family: var(--brand-font);
 }
+/*
 .main-container {
     display: flex;
     flex-flow: row nowrap;
     align-content: flex-start;
     height: 90vh;
-}
+}*/
+
 .sidenav {
-    flex: 1;
+    /*flex: 1;*/
     background-color: var(--main-color);
-    height: 100%;
-
+    font-size: 1.5rem;
 }
 
-.main-content {
-    flex: 5;
-    padding: 2rem;
-    height: 100%;
-}
+
+   
 
 
 .sidenavmenu a {
@@ -53,6 +52,8 @@ body {
     display: block;
    
 }
+
+
 
 
     .sidenavmenu a:hover, .offcanvas a:focus {
@@ -74,6 +75,10 @@ body {
     font-size: 1.5rem;
     color: white;
     text-align: center;
+}
+
+.err {
+    color: red;
 }
 
 @media screen and (max-height: 450px) {

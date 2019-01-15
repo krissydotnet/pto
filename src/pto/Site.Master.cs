@@ -69,7 +69,13 @@ namespace pto
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if ((Session["role"] != null))
+            {
+                if (Session["role"] == "admin")
+                {
+                    lnkAdmin.Visible = true;
+                }
+            }
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)

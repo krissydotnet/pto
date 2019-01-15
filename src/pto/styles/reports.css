@@ -1,0 +1,11 @@
+﻿/* Report Styles*/
+.report-header {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem 0;
+}
+
+.report-employee {
+    font-size: 1.5rem;
+    padding: .5rem 0;
+}

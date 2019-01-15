@@ -11,7 +11,10 @@ namespace pto.Users
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["userid"] == null)
+            {
+                Response.Redirect("../Account/Login.aspx");
+            }
         }
     }
 }

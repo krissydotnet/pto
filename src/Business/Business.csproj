@@ -44,5 +44,11 @@
     <Compile Include="Reports.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\DataLayer.csproj">
+      <Project>{C89098A7-A746-48C4-8D70-408782F15F08}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

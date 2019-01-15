@@ -14,6 +14,7 @@
     <form id="form1" runat="server">
 <div>  
     <asp:TextBox ID="txtDate" runat="server" CssClass="txtDate"></asp:TextBox>
+    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 </div>  
         
     </form>

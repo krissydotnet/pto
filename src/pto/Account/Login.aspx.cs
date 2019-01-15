@@ -11,20 +11,17 @@ namespace pto.Account
 {
     public partial class Login : Page
     {
-    
+        string connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            string connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            LoadUsers(connString);
-            //RegisterHyperLink.NavigateUrl = "Register";
-            // Enable this once you have account confirmation enabled for password reset functionality
-            //ForgotPasswordHyperLink.NavigateUrl = "Forgot";
-            //OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
-            //var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
-            //if (!String.IsNullOrEmpty(returnUrl))
-            //{
-            //    RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
-            //}
+            if (!IsPostBack)
+            {
+                LoadUsers(connString);
+            }
+
+
+
         }
         protected void LoadUsers(string connString)
         {
@@ -40,28 +37,36 @@ namespace pto.Account
         {
             if (IsValid)
             {
-                // Validate the user password
-                //var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                //var signinManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
+                
+                DBAccess data = new DBAccess(connString);
+                User userInfo = data.GetUserInfo(int.Parse(ddlUsers.SelectedItem.Value));
 
-                // This doen't count login failures towards account lockout
-                // To enable password failures to trigger lockout, change to shouldLockout: true
-                //var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: false);
-                var result = SignInStatus.Success;
+                var result = SignInStatus.Failure;
+                if (userInfo != null)
+                {
+                    result = SignInStatus.Success;
+                } 
+                
+                
                 switch (result)
                 {
                     case SignInStatus.Success:
-                        IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                        Session["userid"] = userInfo.userid;
+                        Session["username"] = userInfo.name;
+                        
+                        Response.Write("Welcome " + Session["username"]);
+
+                        if (userInfo.admin == true)
+                        {
+                            Session["role"] = "admin";
+                        } else
+                        {
+                            Session["role"] = "user";
+                        }
+
+                        Response.Redirect("../Users");
                         break;
-                    //case SignInStatus.LockedOut:
-                    //    Response.Redirect("/Account/Lockout");
-                    //    break;
-                    //case SignInStatus.RequiresVerification:
-                    //    Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}", 
-                    //                                    Request.QueryString["ReturnUrl"],
-                    //                                    RememberMe.Checked),
-                    //                      true);
-                    //    break;
+
                     case SignInStatus.Failure:
                     default:
                         FailureText.Text = "Invalid login attempt";

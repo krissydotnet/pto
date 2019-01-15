@@ -57,7 +57,7 @@
                         <div class="container">
                         <ul class="nav navbar-nav">
                             <li><a runat="server" href="~/Users">Home</a></li>
-                            <li><a runat="server" href="~/Admin">Admin</a></li>
+                            <li id="lnkAdmin" runat="server" visible="false"><a runat="server" href="~/Admin">Admin</a></li>
                         </ul>
                         <asp:LoginView runat="server" ViewStateMode="Disabled">
                             <AnonymousTemplate>
@@ -80,34 +80,46 @@
                 
             
         </header>
+            <div class="container-fluid">
+                <div class="row main-content">
+                    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                        <div class="sidebar-sticky ">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="~/Users" runat="server">
+                                        <span data-feather="home"></span>
+                                        Dashboard 
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="~/Users/RequestTimeOff.aspx" runat="server">
+                                        <span data-feather="home"></span>
+                                        Request Time Off
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="~/Users/Reports.aspx" runat="server">
+                                        <span data-feather="home"></span>
+                                        Reports
+                                    </a>
+                                </li>
+                            </ul>
 
-        <main class="main-container">
-            <div class="sidenav container">
-
-
-                    <div class="sidenavmenu" id="mySidenavmenu">
-                        <!--<a href="#" onclick="closeNav()">X</a>-->
-                        <a href="~/Users" runat="server">Dashboard</a>
-                        <a href="~/Users/RequestTimeOff.aspx" runat="server">Request Time Off</a>
-                        <a href="~/Users/Reports.aspx" runat="server">Reports</a>
-                    </div>
-
-            </div>
-
-
-                <div class="main-content">
-
+                   </div>
+                    </nav>
+           
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
-
+                </div>
 
               
-            </div>
-        </main>
-        <footer class="site-footer">
-            <p>&copy; <%: DateTime.Now.Year %> - PTO Tracking System</p>
-        </footer>
+            
+            </main>
+        </div>
+        </div>
     </form>
 </body>
 </html>

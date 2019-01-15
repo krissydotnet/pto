@@ -4,8 +4,9 @@
 
     <div class="jumbotron">
         <h1>Manage PTO</h1>
+        <h2>Welcome <%# Session["username"] %></h2>
         <ul class="nav navbar-nav">
-            <li><a runat="server" href="NewPTORequest.aspx">Enter PTO Request</a></li>
+            <li><a runat="server" href="RequestTimeOff.aspx">Request Time Off</a></li>
             <li><a runat="server" href="Reports.aspx">Report</a></li>
         </ul>
     </div>

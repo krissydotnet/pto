@@ -1,27 +1,25 @@
 ﻿$(document).ready(function () {
-    //$('ptoFrom').fadeOut();
-    //console.log("Hello");
-    //console.log($('.ptoFrom'));
-    //$('.ptoFrom').datepicker();
-   // $('#ptoTo').datepicker();
+   
+    $('.ptoTo').on('change', function () {
+        let fromDate = $('.ptoFrom').val();
+        let toDate = $(this).val();
 
-    $('.ptoFrom').datepicker({
-        beforeShow: function (textbox, instance) {
-            instance.dpDiv.css({
-                marginTop: (-textbox.offsetHeight) + 'px',
-                marginLeft: textbox.offsetWidth + 'px'
-            });
+        if (toDate === fromDate) {
+            $('#rowHours').show();
+        } else {
+            $('#rowHours').hide();
         }
-    });
 
-    $('.ptoTo').datepicker({
-        beforeShow: function (textbox, instance) {
-            instance.dpDiv.css({
-                marginTop: (-textbox.offsetHeight) + 'px',
-                marginLeft: textbox.offsetWidth + 'px'
-            });
-        }
-    });
+    }
+    );
+    
+    
 
+    
 
 });
+
+function onSelectedStartDate(sender, args) {
+    $find("toDate").set_selectedDate(sender.get_selectedDate());
+}
+
