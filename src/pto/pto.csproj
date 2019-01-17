@@ -167,6 +167,8 @@
   <ItemGroup>
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\WebForm1.aspx" />
+    <Content Include="Admin\Controls\NewPTORequests.ascx" />
+    <Content Include="Admin\Controls\Summary.ascx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\Reports.aspx" />
     <Content Include="App_Data\pto_db.mdf" />
@@ -223,9 +225,11 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="images\calendar.gif" />
+    <Content Include="Scripts\Controls\NewPTORequests.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\RequestTimeOff.js" />
+    <Content Include="styles\panels.css" />
     <Content Include="styles\reports.css" />
     <Content Include="styles\styles.css" />
     <Content Include="Default.aspx" />
@@ -298,6 +302,20 @@
     </Compile>
     <Compile Include="Account\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Controls\NewPTORequests.ascx.cs">
+      <DependentUpon>NewPTORequests.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Controls\NewPTORequests.ascx.designer.cs">
+      <DependentUpon>NewPTORequests.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Controls\Summary.ascx.cs">
+      <DependentUpon>Summary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Controls\Summary.ascx.designer.cs">
+      <DependentUpon>Summary.ascx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -378,10 +396,6 @@
       <Project>{c89098a7-a746-48c4-8d70-408782f15f08}</Project>
       <Name>DataLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Business\Business.csproj">
-      <Project>{bfefe8e6-fc0b-4c53-b64d-f6a1d1c7cdc0}</Project>
-      <Name>Business</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -395,6 +409,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="Reports\" />
   </ItemGroup>
   <PropertyGroup>

@@ -83,6 +83,7 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
+                            <asp:Label ID="lblErrorMessage" runat="server" Text=""></asp:Label>
                             <asp:Button runat="server" OnClick="SubmitForm" Text="Submit Request" CssClass="btn btn-default"  />
                             <asp:Button runat="server" OnClick="Cancel" Text="Cancel" CssClass="btn btn-default" />
                         </div>

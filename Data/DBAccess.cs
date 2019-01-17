@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
+
 namespace DataLayer
 {
 
@@ -42,9 +43,10 @@ namespace DataLayer
             
         }
 
-        private void HandleError(Exception ex) {
+        private void HandleError(Exception ex, string source) {
                 error = true;
                 errorMessage = ex.ToString();
+                ExceptionUtility.LogException(ex, source);
         }
 
         private DataTable RunQuery(string query)
@@ -62,7 +64,7 @@ namespace DataLayer
             }
             catch (Exception ex)
             {
-                HandleError(ex);
+                HandleError(ex, query);
                 return null;
             }
             finally
@@ -99,9 +101,23 @@ namespace DataLayer
 
 
         }
+        
         public DataTable GetTimeOffType()
         {
             string query = "SELECT typeid, description FROM TimeOffType where credit=0";
+            return RunQuery(query);
+        }
+
+        public DataTable Report_NewPTORequests()
+        {
+
+            string query = "SELECT PTORequests.Id, Users.userid, Users.name, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, PTORequests.comments, PTORequests.date_requested, " +
+                            " PTORequests.date_approved, TimeOffType.description " +
+                            " FROM     PTORequests INNER JOIN " +
+                            " TimeOffType ON PTORequests.typeid = TimeOffType.typeid INNER JOIN " +
+                            " Users ON PTORequests.userid = Users.userid " +
+                            " WHERE(TimeOffType.credit = 0) AND(PTORequests.date_approved IS NULL) AND(Users.active = 1)";
+
             return RunQuery(query);
         }
 
@@ -162,7 +178,7 @@ namespace DataLayer
             }
             catch (Exception ex)
             {
-                HandleError(ex);
+                HandleError(ex, query);
                 return null;
             }
             finally
@@ -192,8 +208,8 @@ namespace DataLayer
             }
             catch (Exception ex)
             {
-                HandleError(ex);
-                
+                HandleError(ex, "spInsertPTORequest");
+
             }
             finally
             {
@@ -204,7 +220,39 @@ namespace DataLayer
             return (error) ? false : true;
 
         }
-        
+        public bool UpdatePTORequest(PTORequest request)
+        {
+            SqlConnection con = new SqlConnection(conn);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("spUpdatePTORequest", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("id", request.Id);
+                cmd.Parameters.AddWithValue("start_date", request.StartDate);
+                cmd.Parameters.AddWithValue("end_date", request.EndDate);
+                cmd.Parameters.AddWithValue("hours", request.Hours);
+                cmd.Parameters.AddWithValue("comments", request.Comments);
+                cmd.Parameters.AddWithValue("typeid", request.TypeId);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                HandleError(ex, "spInsertPTORequest");
+
+            }
+            finally
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+
+            return (error) ? false : true;
+
+        }
+
         public DataTable PTORequestsInRange(int userid, DateTime start, DateTime end)
         {
             string query = "SELECT PTORequests.Id, PTORequests.userid, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, TimeOffType.description " +
@@ -231,7 +279,7 @@ namespace DataLayer
             }
             catch (Exception ex)
             {
-                HandleError(ex);
+                HandleError(ex, query);
                 return null;
             }
             finally
@@ -271,7 +319,7 @@ namespace DataLayer
             }
             catch (Exception ex)
             {
-                HandleError(ex);
+                HandleError(ex, query);
                 return null;
             }
             finally

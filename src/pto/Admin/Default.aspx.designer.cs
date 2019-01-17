@@ -11,5 +11,23 @@ namespace pto.Admin {
     
     
     public partial class Default {
+        
+        /// <summary>
+        /// NewPTORequests control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::pto.Admin.Controls.NewPTORequests NewPTORequests;
+        
+        /// <summary>
+        /// Summary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::pto.Admin.Controls.Summary Summary;
     }
 }

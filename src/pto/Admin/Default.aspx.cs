@@ -11,7 +11,17 @@ namespace pto.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["userid"] == null)
+            {
+                Response.Redirect("../Account/Login.aspx");
+            }
+            if ((Session["role"] != null))
+            {
+                if (Session["role"] != "admin")
+                {
+                    Response.Redirect("../Account/Login.aspx");
+                }
+            }
         }
     }
 }

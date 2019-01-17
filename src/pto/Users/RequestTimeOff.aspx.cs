@@ -26,10 +26,15 @@ namespace pto.Users
 
             if (!String.IsNullOrEmpty(Request.QueryString["rid"]))
             {
-                //Load Existing PTO Request to Edit
-                SetUpForm();
                 int theRID = Convert.ToInt32(Request.QueryString["rid"]);
-                LoadPTORequest(theRID, userID);
+
+                //Load Existing PTO Request to Edit
+                if (!IsPostBack)
+                {
+                    SetUpForm();
+                    LoadPTORequest(theRID, userID);
+                }
+
             } else
             {
                 //Load empty PTO Request Form
@@ -62,6 +67,7 @@ namespace pto.Users
             ptoType.DataBind();
 
             //Reset visibility of panels
+            lblErrorMessage.Visible = false;
             pnlExistingPTO.Visible = false;
             pnlPTORequestForm.Visible = true;
         }
@@ -119,11 +125,17 @@ namespace pto.Users
 
         protected Boolean SaveData(PTORequest request)
         {
-            //Save request
-            data.InsertPTORequest(request);
+                //Save request
+                data.InsertPTORequest(request);
+
             return !data.error;
         }
-
+        protected Boolean UpdateData(PTORequest request)
+        {
+            //Save request
+            data.UpdatePTORequest(request);
+            return !data.error;
+        }
         protected void Cancel(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
@@ -144,9 +156,24 @@ namespace pto.Users
                 };
                 int hours = Int32.Parse(ptoHours.SelectedValue);
                 request.Hours = GetWorkingDays(request.StartDate, request.EndDate) * hours;
-  
 
-                if (PTORequestExists(request))
+                if (!String.IsNullOrEmpty(Request.QueryString["rid"]))
+                {
+                    request.Id = Convert.ToInt32(Request.QueryString["rid"]);
+                    //Update PTORequest if rid in querystring
+                    if (UpdateData(request))
+                    {
+                            // Data saved successfull - redirect to dashboard
+                            Response.Redirect("Default.aspx");
+                    }
+                    else
+                    {
+                        // Error occurred while updating data
+                        lblErrorMessage.Text = "There was an error saving requests.";
+                        lblErrorMessage.Visible = true;
+                    }
+                }
+                else if (PTORequestExists(request))
                 {
                     // Previous PTO Request overlaps with new PTO request
                     // Hide PTO Request form and show panel with matching PTO Requests
@@ -163,6 +190,8 @@ namespace pto.Users
                     else
                     {
                         // Error occurred while saving data
+                        lblErrorMessage.Text = "There was an error saving requests.";
+                        lblErrorMessage.Visible = true;
                     }
                 }
 

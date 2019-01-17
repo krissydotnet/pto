@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Reports.aspx.cs" Inherits="pto.Admin.Reports" %>
+﻿<%@ Page Title="Reports" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Reports.aspx.cs" Inherits="pto.Admin.Reports" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <link href="../styles/reports.css" rel="stylesheet" />
 </asp:Content>
