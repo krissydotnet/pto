@@ -49,8 +49,35 @@ namespace pto.Controls
                 }
                 
             }
-            Session["SelectedDates"] = list;
+            //Session["SelectedDates"] = list;
+            FuturePTO.DataSource = myTable;
+            FuturePTO.DataBind();
 
+        }
+
+        protected void FuturePTO_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                //Reference the Repeater Item.
+                RepeaterItem item = e.Item;
+                DataRowView dr = (DataRowView)e.Item.DataItem;
+                string nextDate = "[none]";
+
+                if (dr["start_date"] != DBNull.Value)
+                {
+                    nextDate = Convert.ToDateTime(dr["start_date"]).ToShortDateString();
+                }
+
+                if (dr["end_date"] != DBNull.Value && dr["end_date"] != dr["start_date"])
+                {
+                    nextDate += " - " + Convert.ToDateTime(dr["end_date"]).ToShortDateString();
+                }
+
+
+                Label lblNextEventDate = item.FindControl("lblDates") as Label;
+                lblNextEventDate.Text = nextDate;
+            }
         }
     }
 }

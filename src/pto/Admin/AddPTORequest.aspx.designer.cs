@@ -19,6 +19,6 @@ namespace pto.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::pto.Controls.PTORequestForm PTORequestForm;
+        protected global::pto.Controls.PTORequestFormCtrl PTORequestForm;
     }
 }

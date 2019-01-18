@@ -16,6 +16,7 @@ body {
 }
 
 
+
 .navbar {
     background-color: var(--main-color);
 
@@ -83,33 +84,41 @@ body {
 /* Users Main Layout */
 .dashboard-container {
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: row;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
+    align-content: stretch;
 }
 
 .left-container {
-    padding: 0 .5rem;
+    padding: 0 .75rem;
     flex: 1;
     text-align: center;
 }
 .middle-container {
-    padding: 0 .5rem;
+    padding: 0 .75rem;
     flex: 1;
     text-align: center;
 }
 .right-container {
-    padding: 0 .5rem;
+    padding: 0 .75rem;
     flex: 1;
     text-align: center;
 }
-.calendar-wrapper {
+
+/* Calendar Styles  */
+.myCalendar-wrapper {
+    flex-direction: column;
     display: flex;
     justify-content: center;
     align-content: center;
 }
 
+.myCalendar-display {
+    align-self: center;
+}
 
+*/
 /* Cards */
 .card-body {
     border: 1px solid #337AB7;
@@ -157,10 +166,21 @@ body {
 .summary-value {
     font-size: 2rem;
 }
+
 /* Reports Panel */
 .panel-body.ul {
     list-style: none;
 }
+/* Responsive: Portrait tablets and up */
+
+@media screen and (max-width: 600px) {
+    .dashboard-container {
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+}
+
+
 @media screen and (max-height: 450px) {
     .sidenavmenu {
         padding-top: 15px;

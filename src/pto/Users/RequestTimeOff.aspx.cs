@@ -74,7 +74,6 @@ namespace pto.Users
         {
             //Load PTO Request By ID
             PTORequest request = data.GetPTORequestByID(id, userid);
-            Response.Write(data.errorMessage);
             if (request != null)
             {
                 //ptoType.SelectedValue = request.TypeId.ToString();

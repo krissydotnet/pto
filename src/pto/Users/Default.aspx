@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="MyInfo" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="pto.Users.Default" %>
 
-<%@ Register Src="~/Controls/PTORequestForm.ascx" TagPrefix="uc1" TagName="PTORequestForm" %>
+<%@ Register Src="~/Controls/PTORequestFormCtrl.ascx" TagPrefix="uc1" TagName="PTORequestForm" %>
 <%@ Register Src="~/Controls/CalendarControl.ascx" TagPrefix="uc1" TagName="CalendarControl" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <style>
-     
+
     </style>
 </asp:Content>
 
@@ -52,7 +52,7 @@
                             <!-- Summary Body -->
                         </div>
                         <div class="panel-footer">
-                            <a runat="server" href="~/Users/PTORequest.aspx" class="btn btn-primary">Request Time Off</a>
+                            <a runat="server" href="~/Users/PTORequestForm.aspx" class="btn btn-primary">Request Time Off</a>
                         </div>
                     </div>
 
