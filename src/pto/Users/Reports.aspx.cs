@@ -24,7 +24,11 @@ namespace pto.Users
 
             if (!IsPostBack)
             {
-                LoadReport();
+                if (!String.IsNullOrEmpty(Request.QueryString["rid"]))
+                {
+                    //Update PTORequest if rid in querystring
+                    LoadReport(Convert.ToInt32(Request.QueryString["rid"]));
+                }
             }
         }
 
@@ -79,10 +83,7 @@ namespace pto.Users
                 total.Text = subtotal.ToString();
                 runningTotal = subtotal;
             }
-            //if (e.Row.RowType == DataControlRowType.Footer)
-            //{
-                //(e.Row.FindControl("lblGrandTotal") as Label).Text = grandTotal.ToString();
-            //}
+
         }
         private void LoadReport(int selection = 1)
         {

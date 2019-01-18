@@ -80,9 +80,87 @@ body {
 .err {
     color: red;
 }
+/* Users Main Layout */
+.dashboard-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.left-container {
+    padding: 0 .5rem;
+    flex: 1;
+    text-align: center;
+}
+.middle-container {
+    padding: 0 .5rem;
+    flex: 1;
+    text-align: center;
+}
+.right-container {
+    padding: 0 .5rem;
+    flex: 1;
+    text-align: center;
+}
+.calendar-wrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
 
 
+/* Cards */
+.card-body {
+    border: 1px solid #337AB7;
+}
 
+.card-title {
+    background-color: #337AB7;
+    color: #FFFFFF;
+    overflow: hidden;
+    font-size: 1.2rem;
+}
+
+.card-text {
+    background-color: white;
+}
+
+/* Summary */
+
+
+.summary-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: center;
+    padding: .5rem;
+}
+
+.summary-label {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333367;
+}
+
+.panel-body ul {
+    list-style-type: none;
+    text-align: left;
+}
+.panel-body li {
+    padding: 1rem;
+    font-size: 2rem;
+}
+.panel-body a {
+    text-decoration: none;
+}
+.summary-value {
+    font-size: 2rem;
+}
+/* Reports Panel */
+.panel-body.ul {
+    list-style: none;
+}
 @media screen and (max-height: 450px) {
     .sidenavmenu {
         padding-top: 15px;

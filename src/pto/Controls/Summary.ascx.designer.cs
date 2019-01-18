@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace pto.Admin {
+namespace pto.Controls {
     
     
-    public partial class Default {
+    public partial class Summary {
         
         /// <summary>
-        /// NewPTORequests control.
+        /// overviewRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::pto.Controls.NewPTORequests NewPTORequests;
-        
-        /// <summary>
-        /// Summary control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::pto.Controls.Summary Summary;
+        protected global::System.Web.UI.WebControls.Repeater overviewRepeater;
     }
 }

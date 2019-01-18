@@ -1,5 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Summary.ascx.cs" Inherits="pto.Admin.Controls.Summary" %>
-<div class="panel panel-default">
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Summary.ascx.cs" Inherits="pto.Controls.Summary" %>
+<div class="panel panel-primary">
     <div class="panel-heading">
         <i class="fa fa-balance-scale fa-fw"></i>Overall Employee Balances
     </div>

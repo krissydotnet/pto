@@ -14,20 +14,26 @@ namespace DataLayer
     public class PTORequest
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public int UserId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Hours { get; set; }
         public string Comments { get; set; }
         public int TypeId { get; set; }
+        public string Description { get; set; }
         public DateTime DateRequested { get; set; }
         public DateTime DateApproved { get; set; }
+        public bool Credit { get; set; }
     }
     public class User
     {
-        public int userid;
-        public string name;
-        public bool admin;
+        public int UserId { get; set; }
+        public string Name { get; set; }
+        public bool Admin { get; set; }
+        public int TotalPTO { get; set; }
+        public int UsedPTO { get; set; }
+        public int AccrualRate { get; set; }
     }
 
     public class DBAccess
@@ -82,16 +88,20 @@ namespace DataLayer
 
         public User GetUserInfo(int userid)
         {
-            string query = "SELECT userid, name, admin FROM Users where userid=" + userid;
+            string query = "SELECT userid, name, admin, total_pto, used_pto, accrual_rate   FROM Users where userid=" + userid;
             DataTable results = RunQuery(query);
             if ((results != null) && (results.Rows.Count > 0))
             {
                 User userInfo = new User
                 {
-                    userid = (int)results.Rows[0]["userid"],
-                    name = (string)results.Rows[0]["name"],
-                    admin = (bool)results.Rows[0]["admin"]
+                    UserId = (int)results.Rows[0]["userid"],
+                    Name = (string)results.Rows[0]["name"],
+                    Admin = (bool)results.Rows[0]["admin"],
+                    TotalPTO = (int)results.Rows[0]["total_pto"],
+                    UsedPTO = (int)results.Rows[0]["used_pto"],
+                    AccrualRate = Int32.Parse(results.Rows[0]["accrual_rate"].ToString())
                 };
+
                 return userInfo;
             }
             else
@@ -142,7 +152,8 @@ namespace DataLayer
                     " SELECT MIN(PTORequests.start_date) " +
                     " FROM PTORequests INNER JOIN " +
                     " TimeOffType ON PTORequests.typeid = TimeOffType.typeid " + 
-                    " WHERE(TimeOffType.credit = 0) AND userid = A.userid)) AS NextEvent " +
+                    " WHERE(TimeOffType.credit = 0) AND (userid = A.userid) "+ 
+                    " AND (PTORequests.start_date >= GetDate()))) AS NextEvent " +
                     " ON Users.userid = NextEvent.userid" + 
                     " ORDER BY Users.name"; 
 
@@ -252,6 +263,34 @@ namespace DataLayer
             return (error) ? false : true;
 
         }
+        public bool ApprovePTORequest(int ID)
+        {
+            SqlConnection con = new SqlConnection(conn);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("spApprovePTORequest", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("id", ID);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                HandleError(ex, "spApprovePTORequest");
+
+            }
+            finally
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+
+            return (error) ? false : true;
+
+        }
+
 
         public DataTable PTORequestsInRange(int userid, DateTime start, DateTime end)
         {
@@ -329,5 +368,69 @@ namespace DataLayer
             }
             
         }
+        public PTORequest GetPTORequestDetailsByID(int id)
+        {
+            string query = "SELECT PTORequests.id, Users.userid, Users.name, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, PTORequests.comments, PTORequests.typeid, " +
+                            " PTORequests.date_requested, PTORequests.date_approved, TimeOffType.description, TimeOffType.credit " +
+                            " FROM     PTORequests INNER JOIN " +
+                            " TimeOffType ON PTORequests.typeid = TimeOffType.typeid INNER JOIN " +
+                            " Users ON PTORequests.userid = Users.userid " +
+                            " WHERE  PTORequests.id=@id ";
+
+
+            SqlConnection con = new SqlConnection(conn);
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+
+            try
+            {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, con);
+                dataAdapter.SelectCommand.Parameters.Add(new SqlParameter("@id", id));
+                con.Open();
+                dataAdapter.Fill(dt);
+                DateTime startDate;
+                DateTime.TryParse(dt.Rows[0]["start_date"].ToString(), out startDate);
+
+                DateTime endDate;
+                DateTime.TryParse(dt.Rows[0]["end_date"].ToString(), out endDate);
+
+                DateTime dateRequested;
+                DateTime.TryParse(dt.Rows[0]["date_requested"].ToString(), out dateRequested);
+
+                DateTime dateApproved;
+                DateTime.TryParse(dt.Rows[0]["date_approved"].ToString(), out dateApproved);
+
+                PTORequest request = new PTORequest
+                {
+                    Id = Int32.Parse(dt.Rows[0]["id"].ToString()),
+                    Name = dt.Rows[0]["name"].ToString(),
+                    TypeId = Int32.Parse(dt.Rows[0]["typeid"].ToString()),
+                    Description = dt.Rows[0]["description"].ToString(),
+                    StartDate = startDate,
+                    EndDate = endDate,
+                    Comments = dt.Rows[0]["comments"].ToString(),
+                    Hours = Int32.Parse(dt.Rows[0]["hours"].ToString()),
+                    Credit = bool.Parse(dt.Rows[0]["credit"].ToString()),
+                    DateRequested = dateRequested,
+                    DateApproved = dateApproved
+                };
+
+                return request;
+            }
+            catch (Exception ex)
+            {
+                HandleError(ex, query);
+                return null;
+            }
+            finally
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+
+        }
     }
 }
+
+    
+

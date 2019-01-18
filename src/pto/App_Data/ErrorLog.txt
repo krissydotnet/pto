@@ -1,0 +1,175 @@
+********** 1/17/2019 8:21:54 AM **********
+Exception Type: System.ArgumentException
+Exception: Column 'id' does not belong to table .
+Source: SELECT Users.userid, Users.name, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, PTORequests.comments, PTORequests.typeid,  PTORequests.date_requested, PTORequests.date_approved, TimeOffType.description, TimeOffType.credit  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid INNER JOIN  Users ON PTORequests.userid = Users.userid  WHERE  id=@id 
+Stack Trace: 
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at DataLayer.DBAccess.GetPTORequestDetailsByID(Int32 id) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 355
+
+********** 1/17/2019 8:27:23 AM **********
+Exception Type: System.ArgumentException
+Exception: Column 'id' does not belong to table .
+Source: SELECT Users.userid, Users.name, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, PTORequests.comments, PTORequests.typeid,  PTORequests.date_requested, PTORequests.date_approved, TimeOffType.description, TimeOffType.credit  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid INNER JOIN  Users ON PTORequests.userid = Users.userid  WHERE  id=@id 
+Stack Trace: 
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at DataLayer.DBAccess.GetPTORequestDetailsByID(Int32 id) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 355
+
+********** 1/17/2019 8:30:49 AM **********
+Exception Type: System.ArgumentException
+Exception: Column 'id' does not belong to table .
+Source: SELECT Users.userid, Users.name, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, PTORequests.comments, PTORequests.typeid,  PTORequests.date_requested, PTORequests.date_approved, TimeOffType.description, TimeOffType.credit  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid INNER JOIN  Users ON PTORequests.userid = Users.userid  WHERE  id=@id 
+Stack Trace: 
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at DataLayer.DBAccess.GetPTORequestDetailsByID(Int32 id) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 355
+
+********** 1/17/2019 8:33:12 AM **********
+Exception Type: System.ArgumentException
+Exception: Column 'id' does not belong to table .
+Source: SELECT Users.userid, Users.name, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, PTORequests.comments, PTORequests.typeid,  PTORequests.date_requested, PTORequests.date_approved, TimeOffType.description, TimeOffType.credit  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid INNER JOIN  Users ON PTORequests.userid = Users.userid  WHERE  PTORequests.id=@id 
+Stack Trace: 
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at DataLayer.DBAccess.GetPTORequestDetailsByID(Int32 id) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 355
+
+********** 1/17/2019 8:36:55 AM **********
+Exception Type: System.FormatException
+Exception: String was not recognized as a valid DateTime.
+Source: SELECT PTORequests.id, Users.userid, Users.name, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, PTORequests.comments, PTORequests.typeid,  PTORequests.date_requested, PTORequests.date_approved, TimeOffType.description, TimeOffType.credit  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid INNER JOIN  Users ON PTORequests.userid = Users.userid  WHERE  PTORequests.id=@id 
+Stack Trace: 
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at DataLayer.DBAccess.GetPTORequestDetailsByID(Int32 id) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 355
+
+********** 1/17/2019 8:37:19 AM **********
+Exception Type: System.FormatException
+Exception: String was not recognized as a valid DateTime.
+Source: SELECT PTORequests.id, Users.userid, Users.name, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, PTORequests.comments, PTORequests.typeid,  PTORequests.date_requested, PTORequests.date_approved, TimeOffType.description, TimeOffType.credit  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid INNER JOIN  Users ON PTORequests.userid = Users.userid  WHERE  PTORequests.id=@id 
+Stack Trace: 
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at DataLayer.DBAccess.GetPTORequestDetailsByID(Int32 id) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 355
+
+********** 1/17/2019 8:47:01 AM **********
+Exception Type: System.FormatException
+Exception: String was not recognized as a valid DateTime.
+Source: SELECT PTORequests.id, Users.userid, Users.name, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, PTORequests.comments, PTORequests.typeid,  PTORequests.date_requested, PTORequests.date_approved, TimeOffType.description, TimeOffType.credit  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid INNER JOIN  Users ON PTORequests.userid = Users.userid  WHERE  PTORequests.id=@id 
+Stack Trace: 
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.DateTime.Parse(String s)
+   at DataLayer.DBAccess.GetPTORequestDetailsByID(Int32 id) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 355
+
+********** 1/17/2019 12:37:09 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: SELECT userid, name, admin FROM Users where active=1
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.RunQuery(String query) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 64
+
+********** 1/17/2019 12:37:09 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: SELECT typeid, description FROM TimeOffType where credit=0
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.RunQuery(String query) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 64
+
+********** 1/17/2019 12:37:32 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: SELECT userid, name, admin FROM Users where active=1
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.RunQuery(String query) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 64
+
+********** 1/17/2019 12:37:32 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: SELECT typeid, description FROM TimeOffType where credit=0
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.RunQuery(String query) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 64
+
+********** 1/17/2019 12:43:18 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: SELECT PTORequests.Id, PTORequests.userid, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, TimeOffType.description  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid  WHERE  (PTORequests.userid = @userid) AND(TimeOffType.credit = 0) AND  ((PTORequests.start_date BETWEEN @start_date AND @end_date) OR  (PTORequests.end_date  BETWEEN @start_date AND @end_date) OR  (PTORequests.start_date <= @start_date AND PTORequests.end_date >= @end_date))
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.PTORequestsInRange(Int32 userid, DateTime start, DateTime end) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 307
+
+********** 1/17/2019 12:43:18 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: spInsertPTORequest
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.InsertPTORequest(PTORequest request) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 209
+
+********** 1/17/2019 12:49:05 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: SELECT PTORequests.Id, PTORequests.userid, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, TimeOffType.description  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid  WHERE  (PTORequests.userid = @userid) AND(TimeOffType.credit = 0) AND  ((PTORequests.start_date BETWEEN @start_date AND @end_date) OR  (PTORequests.end_date  BETWEEN @start_date AND @end_date) OR  (PTORequests.start_date <= @start_date AND PTORequests.end_date >= @end_date))
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.PTORequestsInRange(Int32 userid, DateTime start, DateTime end) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 307
+
+********** 1/17/2019 12:49:05 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: spInsertPTORequest
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.InsertPTORequest(PTORequest request) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 209
+

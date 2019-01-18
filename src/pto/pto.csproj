@@ -167,8 +167,12 @@
   <ItemGroup>
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\WebForm1.aspx" />
-    <Content Include="Admin\Controls\NewPTORequests.ascx" />
-    <Content Include="Admin\Controls\Summary.ascx" />
+    <Content Include="Admin\AddPTORequest.aspx" />
+    <Content Include="Controls\CalendarControl.ascx" />
+    <Content Include="Controls\NewPTORequests.ascx" />
+    <Content Include="App_Data\ErrorLog.txt" />
+    <Content Include="Controls\PTORequestForm.ascx" />
+    <Content Include="Controls\Summary.ascx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\Reports.aspx" />
     <Content Include="App_Data\pto_db.mdf" />
@@ -223,6 +227,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Controls\PTORequestForm.js" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="images\calendar.gif" />
     <Content Include="Scripts\Controls\NewPTORequests.js" />
@@ -281,7 +286,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="Users\Default.aspx" />
-    <Content Include="Users\RequestTimeOff.aspx" />
+    <Content Include="Users\PTORequest.aspx" />
     <Content Include="Users\Reports.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -303,18 +308,40 @@
     <Compile Include="Account\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Controls\NewPTORequests.ascx.cs">
+    <Compile Include="Admin\AddPTORequest.aspx.cs">
+      <DependentUpon>AddPTORequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddPTORequest.aspx.designer.cs">
+      <DependentUpon>AddPTORequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CalendarControl.ascx.cs">
+      <DependentUpon>CalendarControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\CalendarControl.ascx.designer.cs">
+      <DependentUpon>CalendarControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NewPTORequests.ascx.cs">
       <DependentUpon>NewPTORequests.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Controls\NewPTORequests.ascx.designer.cs">
+    <Compile Include="Controls\NewPTORequests.ascx.designer.cs">
       <DependentUpon>NewPTORequests.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Controls\Summary.ascx.cs">
+    <Content Include="App_Code\Common.cs" />
+    <Compile Include="Controls\PTORequestForm.ascx.cs">
+      <DependentUpon>PTORequestForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\PTORequestForm.ascx.designer.cs">
+      <DependentUpon>PTORequestForm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Summary.ascx.cs">
       <DependentUpon>Summary.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Controls\Summary.ascx.designer.cs">
+    <Compile Include="Controls\Summary.ascx.designer.cs">
       <DependentUpon>Summary.ascx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Default.aspx.cs">
@@ -369,12 +396,12 @@
     <Compile Include="Users\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Users\RequestTimeOff.aspx.cs">
-      <DependentUpon>RequestTimeOff.aspx</DependentUpon>
+    <Compile Include="Users\PTORequest.aspx.cs">
+      <DependentUpon>PTORequest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Users\RequestTimeOff.aspx.designer.cs">
-      <DependentUpon>RequestTimeOff.aspx</DependentUpon>
+    <Compile Include="Users\PTORequest.aspx.designer.cs">
+      <DependentUpon>PTORequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\Reports.aspx.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
@@ -408,10 +435,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Code\" />
-    <Folder Include="Reports\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

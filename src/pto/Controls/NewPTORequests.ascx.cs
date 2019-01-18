@@ -8,7 +8,7 @@ using System.Data;
 using DataLayer;
 using System.Drawing;
 
-namespace pto.Admin.Controls
+namespace pto.Controls
 {
     public partial class NewPTORequests : System.Web.UI.UserControl
     {
@@ -20,7 +20,8 @@ namespace pto.Admin.Controls
 
                 LoadNewPTORequests();
 
-          
+
+
         }
         private void LoadNewPTORequests()
         {
@@ -46,12 +47,46 @@ namespace pto.Admin.Controls
 
             }
         }
-
         protected void ApprovePTO(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(((sender as LinkButton).CommandArgument).ToString());
+            connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            data = new DBAccess(connString);
+            data.ApprovePTORequest(id);
+            if (!data.error)
+            {
+                LoadNewPTORequests();
+            }
+            else
+            {
+                lblErrorMessage.Text = data.errorMessage;
+            }
+
+        }
+        protected void ViewPTO(object sender, EventArgs e)
         {
             string id = ((sender as LinkButton).CommandArgument).ToString();
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#myModal').modal();", true);
+            connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            data = new DBAccess(connString);
+            
+            PTORequest details = data.GetPTORequestDetailsByID(Int32.Parse(id));
+            lblID.Text = id;
+            lblEmployee.Text = details.Name;
+            if (details.EndDate.Date > details.StartDate.Date)
+            {
+                lblDates.Text = details.StartDate.ToShortDateString() + " - " + details.EndDate.ToShortDateString();
+
+            } else
+            {
+                lblDates.Text = details.StartDate.ToShortDateString();
+            }
+            lblType.Text = details.Description;
+            lblHours.Text = details.Hours.ToString();
+            lblComments.Text = details.Comments;
             upModal.Update();
+
+
         }
         protected void OnSelectedIndexChanged(object sender, EventArgs e)
         {
@@ -72,5 +107,19 @@ namespace pto.Admin.Controls
 
 
 
+        protected void btnApprove_Click1(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(lblID.Text);
+            connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            data = new DBAccess(connString);
+            data.ApprovePTORequest(id);
+            if (!data.error)
+            {
+                Response.Write("Success");
+            } else
+            {
+                //lblErrMsg.Text = data.errorMessage;
+            }
+        }
     }
 }

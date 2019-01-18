@@ -51,12 +51,12 @@ namespace pto.Account
                 switch (result)
                 {
                     case SignInStatus.Success:
-                        Session["userid"] = userInfo.userid;
-                        Session["username"] = userInfo.name;
+                        Session["userid"] = userInfo.UserId;
+                        Session["username"] = userInfo.Name;
                         
                         Response.Write("Welcome " + Session["username"]);
 
-                        if (userInfo.admin == true)
+                        if (userInfo.Admin == true)
                         {
                             Session["role"] = "admin";
                         } else

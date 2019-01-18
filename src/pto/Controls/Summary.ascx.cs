@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using DataLayer;
 
-namespace pto.Admin.Controls
+namespace pto.Controls
 {
     public partial class Summary : System.Web.UI.UserControl
     {

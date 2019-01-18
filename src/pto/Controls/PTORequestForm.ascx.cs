@@ -8,73 +8,80 @@ using DataLayer;
 using System.Data;
 
 
-namespace pto.Users
+
+namespace pto.Controls
 {
-    public partial class RequestTimeOff : System.Web.UI.Page
+    public partial class PTORequestForm : System.Web.UI.UserControl
     {
         string connString;
         DBAccess data;
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
+
+        }
+        public void NewPTORequest(int userid)
+        {
+            //Used to load control for Employees
             connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             data = new DBAccess(connString);
-            int userID = (int)Session["userid"];
 
-            if (!String.IsNullOrEmpty(Request.QueryString["rid"]))
+            SetUpForm();
+            Mode.Value = "new";
+            UserID.Value = userid.ToString();
+            ptoEmployee.SelectedValue = userid.ToString();
+            rowEmployee.Visible = false;
+        }
+        public void NewPTORequest()
+        {
+            //Used to load control for Admin
+            connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            data = new DBAccess(connString);
+
+            SetUpForm();
+            Mode.Value = "new";
+            UserID.Value = "";
+        }
+
+        protected void SetUpForm()
             {
-                int theRID = Convert.ToInt32(Request.QueryString["rid"]);
+                //Prevent autocomplete
+                ptoFrom.Attributes.Add("autocomplete", "off");
+                ptoTo.Attributes.Add("autocomplete", "off");
 
-                //Load Existing PTO Request to Edit
-                if (!IsPostBack)
-                {
-                    SetUpForm();
-                    LoadPTORequest(theRID, userID);
-                }
+                //Load Employess drop down list
+                ptoEmployee.DataSource = data.GetUsers();
+                ptoEmployee.DataTextField = "name";
+                ptoEmployee.DataValueField = "userid";
+                ptoEmployee.DataBind();
 
-            } else
-            {
-                //Load empty PTO Request Form
-                if (!IsPostBack)
-                {
-                    SetUpForm();
-                }
+                //Setup date restrictions on CalenderExtender
+                ptoFrom_CalendarExtender.StartDate = DateTime.Now.AddMonths(-1);
+                ptoFrom_CalendarExtender.EndDate = DateTime.Now.AddYears(1);
+                ptoTo_CalendarExtender.StartDate = DateTime.Now.AddMonths(-1);
+                ptoTo_CalendarExtender.EndDate = DateTime.Now.AddYears(1);
+
+                //Load TimeOffType drop down list
+                ptoType.DataSource = data.GetTimeOffType();
+                ptoType.DataTextField = "description";
+                ptoType.DataValueField = "typeid";
+                ptoType.DataBind();
+
+                //Reset visibility of panels
+                lblErrorMessage.Visible = false;
+                pnlExistingPTO.Visible = false;
+                pnlPTORequestForm.Visible = true;
             }
 
-
-
-
-        }
-        protected void SetUpForm()
-        {
-            //Prevent autocomplete
-            ptoFrom.Attributes.Add("autocomplete", "off");
-            ptoTo.Attributes.Add("autocomplete", "off");
-
-            //Setup date restrictions on CalenderExtender
-            ptoFrom_CalendarExtender.StartDate = DateTime.Now.AddMonths(-1);
-            ptoFrom_CalendarExtender.EndDate = DateTime.Now.AddYears(1);
-            ptoTo_CalendarExtender.StartDate = DateTime.Now.AddMonths(-1);
-            ptoTo_CalendarExtender.EndDate = DateTime.Now.AddYears(1);
-
-            //Load TimeOffType drop down list
-            ptoType.DataSource = data.GetTimeOffType();
-            ptoType.DataTextField = "description";
-            ptoType.DataValueField = "typeid";
-            ptoType.DataBind();
-
-            //Reset visibility of panels
-            lblErrorMessage.Visible = false;
-            pnlExistingPTO.Visible = false;
-            pnlPTORequestForm.Visible = true;
-        }
+        
 
         protected void LoadPTORequest(int id, int userid)
         {
+            connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            data = new DBAccess(connString);
+
             //Load PTO Request By ID
             PTORequest request = data.GetPTORequestByID(id, userid);
-            Response.Write(data.errorMessage);
             if (request != null)
             {
                 //ptoType.SelectedValue = request.TypeId.ToString();
@@ -83,7 +90,7 @@ namespace pto.Users
                 if (request.StartDate == request.EndDate)
                 {
                     ptoHours.SelectedValue = request.Hours.ToString();
-                    
+
                 }
                 else
                 {
@@ -94,24 +101,15 @@ namespace pto.Users
 
 
         }
-        public int GetWorkingDays(DateTime from, DateTime to)
-        {
-            var totalDays = 1;
-            for (var date = from; date < to; date = date.AddDays(1))
-            {
-                if (date.DayOfWeek != DayOfWeek.Saturday
-                    && date.DayOfWeek != DayOfWeek.Sunday)
-                    totalDays++;
-            }
 
-            return totalDays;
-        }
         protected bool PTORequestExists(PTORequest request)
         {
+
+
             // Check for existing PTO Requests that fall during current PTO Request
-                DataTable myResults = data.PTORequestsInRange(request.UserId, request.StartDate, request.EndDate);
-                gvExistingRequests.DataSource = myResults;
-                gvExistingRequests.DataBind();
+            DataTable myResults = data.PTORequestsInRange(request.UserId, request.StartDate, request.EndDate);
+            gvExistingRequests.DataSource = myResults;
+            gvExistingRequests.DataBind();
 
             if ((myResults != null) && (myResults.Rows.Count > 0))
             {
@@ -123,14 +121,16 @@ namespace pto.Users
 
         protected Boolean SaveData(PTORequest request)
         {
-                //Save request
-                data.InsertPTORequest(request);
-
+            //Save request
+            data = new DBAccess(connString);
+            data.InsertPTORequest(request);
+            lblErrorMessage.Text = data.errorMessage;
             return !data.error;
         }
         protected Boolean UpdateData(PTORequest request)
         {
             //Save request
+            data = new DBAccess(connString);
             data.UpdatePTORequest(request);
             return !data.error;
         }
@@ -141,12 +141,14 @@ namespace pto.Users
 
         protected void SubmitForm(object sender, EventArgs e)
         {
-            if (IsValid)
+            if (Page.IsValid)
             {
+                connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                data = new DBAccess(connString);
 
                 PTORequest request = new PTORequest
                 {
-                    UserId = (int)Session["userid"],
+                    UserId = Int32.Parse(ptoEmployee.SelectedItem.Value),
                     TypeId = Int32.Parse(ptoType.SelectedValue),
                     StartDate = DateTime.Parse(ptoFrom.Text).Date,
                     EndDate = DateTime.Parse(ptoTo.Text).Date,
@@ -155,14 +157,14 @@ namespace pto.Users
                 int hours = Int32.Parse(ptoHours.SelectedValue);
                 request.Hours = GetWorkingDays(request.StartDate, request.EndDate) * hours;
 
-                if (!String.IsNullOrEmpty(Request.QueryString["rid"]))
+                /*if (!String.IsNullOrEmpty(Request.QueryString["rid"]))
                 {
                     request.Id = Convert.ToInt32(Request.QueryString["rid"]);
                     //Update PTORequest if rid in querystring
                     if (UpdateData(request))
                     {
-                            // Data saved successfull - redirect to dashboard
-                            Response.Redirect("Default.aspx");
+                        // Data saved successfull - redirect to dashboard
+                        Response.Redirect("Default.aspx");
                     }
                     else
                     {
@@ -171,7 +173,8 @@ namespace pto.Users
                         lblErrorMessage.Visible = true;
                     }
                 }
-                else if (PTORequestExists(request))
+                else */
+                if (PTORequestExists(request))
                 {
                     // Previous PTO Request overlaps with new PTO request
                     // Hide PTO Request form and show panel with matching PTO Requests
@@ -188,7 +191,7 @@ namespace pto.Users
                     else
                     {
                         // Error occurred while saving data
-                        lblErrorMessage.Text = "There was an error saving requests.";
+                        //lblErrorMessage.Text += "There was an error saving requests.";
                         lblErrorMessage.Visible = true;
                     }
                 }
@@ -202,7 +205,7 @@ namespace pto.Users
         {
             // If multiple buttons are used in a GridView control, use the
             // CommandName property to determine which button was clicked.
-            if(e.CommandName=="Edit")
+            if (e.CommandName == "Edit")
             {
                 // Convert the row index stored in the CommandArgument
                 // property to an Integer.
@@ -212,9 +215,29 @@ namespace pto.Users
                 // by the user from the Rows collection.
                 GridViewRow row = gvExistingRequests.Rows[index];
                 int rID = Int32.Parse(gvExistingRequests.DataKeys[index].Value.ToString());
-                Response.Redirect("RequestTimeOff.aspx?rid=" + rID);
+                ptoID.Value = rID.ToString();
+                Mode.Value = "edit";
                 // Now you have access to the gridviewrow.
             }
-        }   
+        }
+
+        public static int GetWorkingDays(DateTime from, DateTime to)
+        {
+            var totalDays = 1;
+            for (var date = from; date < to; date = date.AddDays(1))
+            {
+                if (date.DayOfWeek != DayOfWeek.Saturday
+                    && date.DayOfWeek != DayOfWeek.Sunday)
+                    totalDays++;
+            }
+
+            return totalDays;
+        }
+
+        protected void gvExistingRequests_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+        }
     }
-}
+
+    }

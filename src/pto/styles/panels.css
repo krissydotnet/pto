@@ -1,4 +1,5 @@
-﻿/* Panels */
+﻿
+/* Panels */
 .pnl-heading {
     display: flex;
     flex-flow: row wrap;
@@ -52,23 +53,25 @@
     flex: 2;
 }
 
-.mymodalBackground {
-    background-color: Black;
-    filter: alpha(opacity=90);
-    opacity: 0.8;
-}
 /* Modal Popup Styles*/
-.mymodalPopup {
-    background-color: #FFFFFF;
-    border-radius: 1rem;
-    border-width: 3px;
-    border-style: solid;
-    border-color: black;
-    padding-top: 10px;
-    padding-left: 10px;
-    width: 600px;
-    height: 600px;
+
+#myModal .modal-header {
+    background-color: #337AB7;
+
 }
+#myModal .modal-title {
+    /*font-size: 2rem;*/
+    font-weight: bold;
+    color: white;
+}
+#myModal .modal-content {
+ 
+    overflow: hidden;
+}
+#myModal .modal-body {
+    padding: 1rem;
+}
+
 .rotate {
     -moz-transition: all .5s linear;
     -webkit-transition: all .5s linear;

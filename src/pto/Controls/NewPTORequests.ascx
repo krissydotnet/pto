@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" EnableViewState="false" AutoEventWireup="true" CodeBehind="NewPTORequests.ascx.cs" Inherits="pto.Admin.Controls.NewPTORequests" %>
+﻿<%@ Control Language="C#" EnableViewState="false" AutoEventWireup="true" CodeBehind="NewPTORequests.ascx.cs" Inherits="pto.Controls.NewPTORequests" %>
 
 <div class="panel panel-primary">
     <div class="panel-heading">
@@ -27,8 +27,8 @@
     </a>
     <!-- /.panel-heading -->
     <div class="panel-body" id="new-requests">
-
-
+        <asp:HiddenField id="divVisibility" runat="server"/>
+        
         <asp:GridView ID="gvNewRequests" OnSelectedIndexChanged="OnSelectedIndexChanged" CssClass="table table-hover table-striped" OnRowDataBound="gvNewRequests_RowDataBound" AutoGenerateColumns="False" runat="server">
  
             <Columns>
@@ -63,13 +63,12 @@
                 </asp:TemplateField>
                  <asp:TemplateField ItemStyle-Width = "30px" HeaderText = "">
    <ItemTemplate>
-       <asp:LinkButton ID="lnkEdit" runat="server" CommandArgument='<%# Eval("Id") %>'  OnClick="ApprovePTO" Text=""><i class="fa fa-asterisk fa-2x"></i></asp:LinkButton>
+       <asp:LinkButton ID="lnkEdit" runat="server" CssClass="btn btn-primary" CommandArgument='<%# Eval("Id") %>'   OnClick="ApprovePTO" Text="Approve"></asp:LinkButton>
    </ItemTemplate>
 </asp:TemplateField>
             </Columns>
-
         </asp:GridView>
-
+        <asp:Label ID="lblErrorMessage" runat="server" Text="" CssClass="err"></asp:Label>
     </div>
 
 </div>
@@ -78,8 +77,8 @@
 </div>
 
 <!-- card -->
-<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="myModal" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered " role="document">
         <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
             <ContentTemplate>
 
@@ -91,35 +90,38 @@
         </button>
       </div>
       <div class="modal-body">
-  
+            <div class="container">
                       <div class="form-horizontal">
                                    
     <div class="form-group">
-            Employee: <asp:Label ID="Label1" runat="server" Text="{Employee}"></asp:Label>
+            <asp:Label ID="lblID" runat="server" Text="" Visible="false"></asp:Label>
+            <asp:Label  AssociatedControlID="lblEmployee" runat="server" Text="Employee:"></asp:Label>
+            <asp:Label ID="lblEmployee" runat="server" Text="{Employee}"></asp:Label>
 
     </div>
     <div class="form-group">
-            Dates: <asp:Label ID="Label2" runat="server" Text="{Dates}"></asp:Label>
+            <asp:Label  AssociatedControlID="lblDates" runat="server" Text="Dates:"></asp:Label>
+            <asp:Label ID="lblDates" runat="server" Text="{Dates}"></asp:Label>
 
     </div>
     <div class="form-group">
-            Hours: <asp:Label ID="Label3" runat="server" Text="{Hours}"></asp:Label>
+           <asp:Label  AssociatedControlID="lblHours" runat="server" Text="Hours:"></asp:Label>
+           <asp:Label ID="lblHours" runat="server" Text="{Hours}"></asp:Label>
 
     </div>
     <div class="form-group">
-            Type: <asp:Label ID="Label4" runat="server" Text="{Type}"></asp:Label>
-
+         <asp:Label  AssociatedControlID="lblType" runat="server" Text="Type:"></asp:Label>
+         <asp:Label ID="lblType" runat="server" Text="{Type}"></asp:Label>
     </div>
         <div class="form-group">
-            Comments: <asp:Label ID="Label5" runat="server" Text="{Comments}"></asp:Label>
-
+            <asp:Label  AssociatedControlID="lblComments" runat="server" Text="Comments:"></asp:Label>
+            <asp:Label ID="lblComments" runat="server" Text="{Comments}"></asp:Label>
     </div>
     </div>
-    <asp:Button ID="btnApprove" runat="server" Text="Approve" />
-      </div>
+  
+      </div></div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Approve</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
 
