@@ -13,13 +13,16 @@ namespace pto.Users
         {
             if (Session["userid"] == null)
             {
-                Response.Redirect("../Account/Login.aspx");
+                Response.Redirect("../Default.aspx");
             }
 
             if (!IsPostBack)
             {
                 int userID = (int)Session["userid"];
                 PTORequestFormCtrl.NewPTORequest(userID);
+                ClientScript.RegisterStartupScript(this.GetType(), "none", "ShowPopup();", true);
+                lblHeading.Text = "Request Time Off";
+                upModal.Update();
             }
         }
     }

@@ -189,6 +189,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Controls\CalendarControl.ascx" />
+    <Content Include="Controls\LoginForm.ascx" />
     <Content Include="Controls\NewPTORequests.ascx" />
     <Content Include="App_Data\ErrorLog.txt" />
     <Content Include="Controls\PTORequestFormCtrl.ascx" />
@@ -350,6 +351,13 @@
     </Compile>
     <Compile Include="Controls\CalendarControl.ascx.designer.cs">
       <DependentUpon>CalendarControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LoginForm.ascx.cs">
+      <DependentUpon>LoginForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\LoginForm.ascx.designer.cs">
+      <DependentUpon>LoginForm.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\NewPTORequests.ascx.cs">
       <DependentUpon>NewPTORequests.ascx</DependentUpon>

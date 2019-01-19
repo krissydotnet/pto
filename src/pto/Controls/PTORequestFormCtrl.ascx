@@ -2,24 +2,24 @@
 <asp:Panel ID="pnlPTORequestForm" runat="server">
     <section id="ptoRequests">
         <div class="form-horizontal">
-            <h2>Request Time Off</h2>
+           <!-- <h2>Request Time Off</h2> -->
             <div class="form-group" id="rowEmployee" runat="server">
-                <asp:Label runat="server" AssociatedControlID="ptoEmployee" CssClass="col-md-3 control-label">Employee *</asp:Label>
-                <div class="col-md-9">
+                <asp:Label runat="server" AssociatedControlID="ptoEmployee" CssClass="col-md-2 control-label">Employee *</asp:Label>
+                <div class="col-md-10">
                     <asp:DropDownList ID="ptoEmployee" runat="server"></asp:DropDownList>
 
                 </div>
             </div>
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="ptoType" CssClass="col-md-3 control-label">Time of type *</asp:Label>
-                <div class="col-md-9">
+                <asp:Label runat="server" AssociatedControlID="ptoType" CssClass="col-md-2 control-label">Time of type *</asp:Label>
+                <div class="col-md-10">
                     <asp:DropDownList ID="ptoType" runat="server"></asp:DropDownList>
 
                 </div>
             </div>
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="ptoFrom" CssClass="col-md-3 control-label">From *</asp:Label>
-                <div class="col-md-9">
+                <asp:Label runat="server" AssociatedControlID="ptoFrom" CssClass="col-md-2 control-label">From *</asp:Label>
+                <div class="col-md-10">
                     <asp:TextBox ID="ptoFrom" CssClass="ptoFrom" AutoCompleteType="Disabled" runat="server"></asp:TextBox>
                     <asp:ImageButton ID="btnFrom" runat="server" ImageUrl="~/images/calendar.gif" ImageAlign="Bottom" CausesValidation="false" />
                     <ajaxToolkit:CalendarExtender ID="ptoFrom_CalendarExtender" BehaviorID="fromDate" runat="server" PopupButtonID="btnFrom" TargetControlID="ptoFrom" OnClientDateSelectionChanged="onSelectedStartDate" />
@@ -36,8 +36,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="ptoTo" CssClass="col-md-3 control-label">To *</asp:Label>
-                <div class="col-md-9">
+                <asp:Label runat="server" AssociatedControlID="ptoTo" CssClass="col-md-2 control-label">To *</asp:Label>
+                <div class="col-md-10">
                     <asp:TextBox ID="ptoTo" CssClass="ptoTo" AutoCompleteType="Disabled" runat="server"></asp:TextBox>
                     <asp:ImageButton ID="btnTo" runat="server" ImageUrl="~/images/calendar.gif" ImageAlign="Bottom" CausesValidation="false" />
                     <ajaxToolkit:CalendarExtender ID="ptoTo_CalendarExtender" runat="server" BehaviorID="toDate" PopupButtonID="btnTo" TargetControlID="ptoTo" />
@@ -61,8 +61,8 @@
                 </div>
             </div>
             <div class="form-group" id="rowHours">
-                <asp:Label runat="server" AssociatedControlID="ptoHours" CssClass="col-md-3 control-label">Hours</asp:Label>
-                <div class="col-md-9">
+                <asp:Label runat="server" AssociatedControlID="ptoHours" CssClass="col-md-2 control-label">Hours</asp:Label>
+                <div class="col-md-10">
                     <asp:DropDownList ID="ptoHours" runat="server">
                         <asp:ListItem Text="Half Day" Value="4"></asp:ListItem>
                         <asp:ListItem Text="Full Day" Value="8" Selected="True"></asp:ListItem>
@@ -73,14 +73,14 @@
 
 
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="ptoComments" CssClass="col-md-3 control-label">Note</asp:Label>
-                <div class="col-md-9">
+                <asp:Label runat="server" AssociatedControlID="ptoComments" CssClass="col-md-2 control-label">Note</asp:Label>
+                <div class="col-md-10">
                     <asp:TextBox ID="ptoComments" runat="server" Height="71px" MaxLength="100" TextMode="MultiLine" Width="366px"></asp:TextBox>
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-9">
+                <div class="col-md-offset-2 col-md-10">
                     <asp:HiddenField ID="Mode" runat="server" />
                     <asp:HiddenField ID="UserID" runat="server" />
                     <asp:HiddenField ID="ptoID" runat="server" />
@@ -96,7 +96,7 @@
     <section id="ptoExistingRequests">
         <div class="form-horizontal">
             <h2>Existing PTO Requests</h2>
-            <asp:Label ID="lblMessage" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
             <asp:GridView ID="gvExistingRequests" DataKeyNames="id" OnRowEditing="gvExistingRequests_RowEditing" OnRowCommand="gvExistingRequests_RowCommand" AutoGenerateColumns="false" CssClass="table table-hover table-striped" runat="server">
                 <Columns>
                     <asp:BoundField HeaderText="Start" DataField="start_date" DataFormatString="{0:d}" />

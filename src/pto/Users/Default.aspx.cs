@@ -19,7 +19,7 @@ namespace pto.Users
         {
             if (Session["userid"] == null)
             {
-                Response.Redirect("../Account/Login.aspx");
+                Response.Redirect("~/");
             }
            
 

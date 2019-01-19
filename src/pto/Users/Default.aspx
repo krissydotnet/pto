@@ -4,9 +4,7 @@
 <%@ Register Src="~/Controls/CalendarControl.ascx" TagPrefix="uc1" TagName="CalendarControl" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-    <style>
 
-    </style>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">

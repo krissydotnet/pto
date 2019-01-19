@@ -28,7 +28,7 @@ namespace pto
             string connString;
             connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
-
+            // Clear existing jobs 
             using (var connection = JobStorage.Current.GetConnection())
             {
                 foreach (var recurringJob in connection.GetRecurringJobs())
@@ -36,7 +36,8 @@ namespace pto
                     RecurringJob.RemoveIfExists(recurringJob.Id);
                 }
             }
-            RecurringJob.AddOrUpdate(() => JobScheduler.RunAccrualJob(connString), Cron.Monthly);
+            //Start ScheduledJobs
+            RecurringJob.AddOrUpdate(() => JobScheduler.RunAccrualJob(connString), Cron.Monthly, TimeZoneInfo.Local);
             RecurringJob.AddOrUpdate(() => JobScheduler.RunDailyPTOCheck(connString), Cron.Daily, TimeZoneInfo.Local);
 
         }

@@ -233,6 +233,11 @@ namespace pto.Controls
         {
 
         }
+
+        protected void gvExistingRequests_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
     }
