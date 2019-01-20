@@ -11,15 +11,33 @@ namespace pto.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userid"] == null)
-            {
-                Response.Redirect("../Account/Login.aspx");
-            }
+
+            this.PTORequestFormCtrl.PTORequestedSuccess += PTORequestFormCtrl_PTORequestedSuccess;
+            this.PTORequestFormCtrl.PTORequestedCancel += PTORequestFormCtrl_PTORequestedCancel;
+            this.PTORequestFormCtrl.PTORequestedExist += PTORequestFormCtrl_PTORequestedExist;
 
             if (!IsPostBack)
             {
-                PTORequestForm.NewPTORequest();
+                PTORequestFormCtrl.NewPTORequest();
+                ClientScript.RegisterStartupScript(this.GetType(), "none", "ShowPopup();", true);
+
             }
+        }
+
+        private void PTORequestFormCtrl_PTORequestedExist(object sender, EventArgs e)
+        {
+        }
+
+        private void PTORequestFormCtrl_PTORequestedCancel(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+
+        }
+
+        private void PTORequestFormCtrl_PTORequestedSuccess(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DataLayer;
 using System.Data;
+using pto.Controls.Reports;
 
 namespace pto.Admin
 {
@@ -15,19 +16,71 @@ namespace pto.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userid"] == null)
+            EmployeeCtrl.OnEmployeeChange += EmployeeCtrl_OnEmployeeChange;
             {
-                Response.Redirect("../Default.aspx");
-            } 
-
-            if (!IsPostBack)
-            {
-                pnl_ptoRequests.Visible = true;
-                Admin_Reports.LoadEmployeeBalanceReport();
+                if ((Request.QueryString["rid"] != null))
+                {
+                LoadReports(Convert.ToInt32(Request.QueryString["rid"]));
+                }
+                
             }
         }
 
-       
-        
+        private void EmployeeCtrl_OnEmployeeChange(object sender, EventArgs e)
+        {
+            LoadEmployeeDetailReport();
+
+        }
+
+        protected void LoadReports(int rid)
+        {
+            switch(rid)
+            {
+                case 1:
+                    pnl_EmployeeBalanceReport.Visible = true;
+                    EmployeeBalanceReport.LoadEmployeeBalanceReport();
+                    break;
+                case 2:
+                    pnl_EmployeeDetailReport.Visible = true;
+                    LoadEmployeeDetailReport();
+                    break;
+                default:
+                    break;
+               
+            }
+        }
+        protected void LoadEmployeeDetailReport()
+        {
+
+            // Load Employee Data
+            DataTable EmployeeList = EmployeeCtrl.GetEmployeeList();
+            if (EmployeeCtrl.EmployeeID != 0)
+            {
+                DataView dv = new DataView(EmployeeList);
+                dv.RowFilter = "userid = " + EmployeeCtrl.EmployeeID;
+                rptEmployeeDetailReport.DataSource = dv;
+            }
+            else
+            {
+                rptEmployeeDetailReport.DataSource = EmployeeList;
+            }
+            
+            rptEmployeeDetailReport.DataBind();
+        }
+
+        protected void rptEmployeeDetailReport_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item ||
+        e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+
+                DataRowView employee = (DataRowView) e.Item.DataItem;
+                EmployeeDetailReport control = (EmployeeDetailReport) e.Item.FindControl("EmployeeDetailReport");
+                control.LoadPTODetailsToDate(Convert.ToInt32(employee["userid"]), Convert.ToString(employee["name"]));
+    
+            }
+
+
+        }
     }
 }

@@ -116,15 +116,15 @@ namespace pto.Controls
             switch (selection)
             {
                 case 1:
-                    pnl_ptoRequests.Visible = true;
+                    //pnl_ptoRequests.Visible = true;
                     LoadPTODetailsToDate(uid, username);
                     break;
                 case 2:
 
-                    LoadScheduledPTO(uid, username);
+                    //LoadScheduledPTO(uid, username);
                     break;
                 default:
-                    pnl_ptoRequests.Visible = false;
+                    //pnl_ptoRequests.Visible = false;
                     break;
             }
         }

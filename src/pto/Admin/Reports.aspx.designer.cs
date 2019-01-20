@@ -13,21 +13,48 @@ namespace pto.Admin {
     public partial class Reports {
         
         /// <summary>
-        /// pnl_ptoRequests control.
+        /// pnl_EmployeeDetailReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnl_ptoRequests;
+        protected global::System.Web.UI.WebControls.Panel pnl_EmployeeDetailReport;
         
         /// <summary>
-        /// Admin_Reports control.
+        /// EmployeeCtrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::pto.Controls.Admin_Reports Admin_Reports;
+        protected global::pto.Controls.EmployeeCtrl EmployeeCtrl;
+        
+        /// <summary>
+        /// rptEmployeeDetailReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptEmployeeDetailReport;
+        
+        /// <summary>
+        /// pnl_EmployeeBalanceReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl_EmployeeBalanceReport;
+        
+        /// <summary>
+        /// EmployeeBalanceReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::pto.Controls.Reports.EmployeeBalanceReport EmployeeBalanceReport;
     }
 }

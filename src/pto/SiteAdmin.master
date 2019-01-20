@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SiteAdmin.master.cs" Inherits="pto.SiteAdmin" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Controls/PTORequestForm.js"></script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <div class="row">
+        <div class="wrapper">
+
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar" id="sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="~/Admin/Default.aspx" runat="server">
+                                <span data-feather="home"></span>
+                                <i class="fa fa-home"></i>
+                                Dashboard 
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Admin/AddPTORequest.aspx" runat="server">
+                                <span data-feather="home"></span>
+                                <i class="fa fa-plus-square"></i>
+                                Add PTO Request
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link dropdown-toggle">
+                                <i class="fa fa-table"></i>Reports</a>
+                            <ul class="collapse list-unstyled" id="reportSubmenu">
+                                <li>
+                                    <a class="nav-link" href="~/Admin/Reports.aspx?rid=1" runat="server">Overall Employee Balance
+                                    </a></li>
+                                <li>
+                                    <a class="nav-link" href="Reports.aspx?rid=2">Employee Detail Report
+                                    </a></li>
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
+
+
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-9 ml-sm-auto col-lg-10 px-4" id="admin-dashboard">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+
+                </div>
+            </nav>
+            <asp:ContentPlaceHolder ID="MainAdminContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+</asp:Content>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Admin" Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="pto.Admin.Default" %>
+﻿<%@ Page Title="Admin" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="pto.Admin.Default" %>
 
 <%@ Register Src="~/Controls/NewPTORequests.ascx" TagPrefix="uc1" TagName="NewPTORequests" %>
 <%@ Register Src="~/Controls/Summary.ascx" TagPrefix="uc1" TagName="Summary" %>

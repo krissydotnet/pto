@@ -57,7 +57,7 @@
       </li>
 
     </ul>
-      <asp:LoginView runat="server" ViewStateMode="Disabled">
+      <asp:LoginView runat="server" Visible="false" ViewStateMode="Disabled">
           <AnonymousTemplate>
               <ul class="navbar-nav navbar-right">
                   <li class="nav-item" ><a class="nav-link" runat="server" href="~/">Log in</a></li>

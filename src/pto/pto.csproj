@@ -190,11 +190,14 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Controls\Admin_Reports.ascx" />
     <Content Include="Controls\CalendarControl.ascx" />
+    <Content Include="Controls\EmployeeCtrl.ascx" />
     <Content Include="Controls\ExistingPTORequests.ascx" />
     <Content Include="Controls\LoginForm.ascx" />
     <Content Include="Controls\NewPTORequests.ascx" />
     <Content Include="App_Data\ErrorLog.txt" />
     <Content Include="Controls\PTORequestFormCtrl.ascx" />
+    <Content Include="Controls\Reports\EmployeeBalanceReport.ascx" />
+    <Content Include="Controls\Reports\EmployeeDetailReport.ascx" />
     <Content Include="Controls\Summary.ascx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\Reports.aspx" />
@@ -296,8 +299,7 @@
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Main.Master" />
-    <Content Include="WebForm1.aspx" />
-    <Content Include="AdminMaster.master" />
+    <Content Include="SiteAdmin.master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -342,12 +344,19 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminMaster.master.cs">
-      <DependentUpon>AdminMaster.master</DependentUpon>
+    <Compile Include="Controls\EmployeeCtrl.ascx.cs">
+      <DependentUpon>EmployeeCtrl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminMaster.master.designer.cs">
-      <DependentUpon>AdminMaster.master</DependentUpon>
+    <Compile Include="Controls\EmployeeCtrl.ascx.designer.cs">
+      <DependentUpon>EmployeeCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteAdmin.master.cs">
+      <DependentUpon>SiteAdmin.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteAdmin.master.designer.cs">
+      <DependentUpon>SiteAdmin.master</DependentUpon>
     </Compile>
     <Compile Include="Admin\AddPTORequest.aspx.cs">
       <DependentUpon>AddPTORequest.aspx</DependentUpon>
@@ -397,6 +406,20 @@
     </Compile>
     <Compile Include="Controls\PTORequestFormCtrl.ascx.designer.cs">
       <DependentUpon>PTORequestFormCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Reports\EmployeeBalanceReport.ascx.cs">
+      <DependentUpon>EmployeeBalanceReport.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Reports\EmployeeBalanceReport.ascx.designer.cs">
+      <DependentUpon>EmployeeBalanceReport.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Reports\EmployeeDetailReport.ascx.cs">
+      <DependentUpon>EmployeeDetailReport.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Reports\EmployeeDetailReport.ascx.designer.cs">
+      <DependentUpon>EmployeeDetailReport.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\Summary.ascx.cs">
       <DependentUpon>Summary.ascx</DependentUpon>
@@ -491,13 +514,6 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

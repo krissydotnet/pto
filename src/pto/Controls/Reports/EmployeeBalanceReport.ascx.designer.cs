@@ -7,36 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace pto.Admin {
+namespace pto.Controls.Reports {
     
     
-    public partial class AddPTORequest {
+    public partial class EmployeeBalanceReport {
         
         /// <summary>
-        /// lblModalHeader control.
+        /// pnlEmployeeBalance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblModalHeader;
+        protected global::System.Web.UI.WebControls.Panel pnlEmployeeBalance;
         
         /// <summary>
-        /// upModal control.
+        /// lblReportHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upModal;
+        protected global::System.Web.UI.WebControls.Label lblReportHeader;
         
         /// <summary>
-        /// PTORequestFormCtrl control.
+        /// gvReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::pto.Controls.PTORequestFormCtrl PTORequestFormCtrl;
+        protected global::System.Web.UI.WebControls.GridView gvReport;
     }
 }

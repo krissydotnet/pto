@@ -15,7 +15,11 @@ body {
     min-height: 75rem;
     padding-top: 5rem;
 }
-
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
 
 /* Header Navigation Bar */
 .feather {
@@ -35,6 +39,14 @@ body {
     font-family: var(--brand-font);
 }
 
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+}
+
+    #sidebar.active {
+        margin-left: -250px;
+    }
 /* Side Bar */
 
 .sidebar {
@@ -93,11 +105,7 @@ body {
 }
 
 
-
-
 /* Modal Popup Styles*/
-
-
 #myModal .modal-header {
     background-color: #337AB7;
     display: flex;
