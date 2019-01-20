@@ -28,7 +28,7 @@ namespace pto
         }
 
         protected void LoadLoginForm() {
-                LoginPanel.Visible = true;
+                //LoginPanel.Visible = true;
             //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none",
             //"<script>$('#myModal').modal('show');</script> ", false);
             ClientScript.RegisterStartupScript(this.GetType(), "none", "ShowPopup();", true);

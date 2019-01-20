@@ -1,10 +1,11 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Summary.ascx.cs" Inherits="pto.Controls.Summary" %>
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <i class="fa fa-balance-scale fa-fw"></i>Overall Employee Balances
+<div class="custom-card">
+    <div class="custom-card-title">
+        <h3 class="custom-title"><i class="fa fa-balance-scale fa-fw"></i>
+        Overall Employee Balances</h3>
     </div>
     <!-- /.panel-heading -->
-    <div class="panel-body">
+    <div class="custom-body">
         <!-- Repeater -->
         <asp:Repeater ID="overviewRepeater" OnItemDataBound="overviewRepeater_ItemDataBound" runat="server">
             <HeaderTemplate>

@@ -7,7 +7,7 @@
                             <asp:Literal runat="server" ID="FailureText" />
                         </p>
                     </asp:PlaceHolder>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <asp:Label runat="server" AssociatedControlID="ddlUsers" CssClass="col-md-2 control-label">User: </asp:Label>
                         <div class="col-md-10">
                             <asp:DropDownList ID="ddlUsers" runat="server"></asp:DropDownList>

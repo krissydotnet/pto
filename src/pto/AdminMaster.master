@@ -1,0 +1,46 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="pto.AdminMaster" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    
+    <div class="row">
+       <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="~/Admin/Default.aspx" runat="server">
+                  <span data-feather="home"></span>
+                  Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+             
+                <li class="nav-item nav-dropdown">
+        <a class="nav-link nav-dropdown-toggle" href="~/Admin/Reports.aspx" runat="server">
+          <i class="nav-icon cui-puzzle"></i> Reports
+        </a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="nav-icon cui-puzzle"></i> Overall Employee Balance
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="nav-icon cui-puzzle"></i> PTO Overview
+            </a>
+          </li>
+        </ul>
+      </li>
+              
+            </ul>
+
+           
+          </div>
+        </nav>
+        <div class="col-md-9 ml-sm-auto col-lg-10 px-4" id="admin-dashboard">
+         <asp:ContentPlaceHolder ID="MainAdminContent" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </div>
+</asp:Content>

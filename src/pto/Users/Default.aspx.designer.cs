@@ -40,6 +40,24 @@ namespace pto.Users {
         protected global::System.Web.UI.WebControls.Label lblAccrual;
         
         /// <summary>
+        /// lnkReportPTOTaken control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkReportPTOTaken;
+        
+        /// <summary>
+        /// lnkScheduledPTO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkScheduledPTO;
+        
+        /// <summary>
         /// CalendarControl control.
         /// </summary>
         /// <remarks>
@@ -49,30 +67,30 @@ namespace pto.Users {
         protected global::pto.Controls.CalendarControl CalendarControl;
         
         /// <summary>
-        /// pnlPTORequest control.
+        /// lblModalHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlPTORequest;
+        protected global::System.Web.UI.WebControls.Label lblModalHeader;
         
         /// <summary>
-        /// upModal control.
+        /// reportsModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upModal;
+        protected global::System.Web.UI.UpdatePanel reportsModal;
         
         /// <summary>
-        /// PTORequestForm control.
+        /// User_Reports control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::pto.Controls.PTORequestFormCtrl PTORequestForm;
+        protected global::pto.Controls.User_Reports User_Reports;
     }
 }

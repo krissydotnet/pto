@@ -74,14 +74,12 @@ namespace pto
                 if (Session["role"] == "admin")
                 {
                     lnkAdmin.Visible = true;
+                    
                 }
             }
         }
 
-        protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
-        {
-            Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-        }
+
     }
 
 }

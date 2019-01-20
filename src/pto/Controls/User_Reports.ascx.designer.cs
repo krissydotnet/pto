@@ -10,51 +10,51 @@
 namespace pto.Controls {
     
     
-    public partial class NewPTORequests {
+    public partial class User_Reports {
         
         /// <summary>
-        /// lblTotal control.
+        /// pnl_ptoRequests control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotal;
+        protected global::System.Web.UI.WebControls.Panel pnl_ptoRequests;
         
         /// <summary>
-        /// divVisibility control.
+        /// lblReportHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField divVisibility;
+        protected global::System.Web.UI.WebControls.Label lblReportHeader;
         
         /// <summary>
-        /// gvNewRequests control.
+        /// lblRange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvNewRequests;
+        protected global::System.Web.UI.WebControls.Label lblRange;
         
         /// <summary>
-        /// lblErrorMessage control.
+        /// lblUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblErrorMessage;
+        protected global::System.Web.UI.WebControls.Label lblUserName;
         
         /// <summary>
-        /// ButtonHidden control.
+        /// gvReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonHidden;
+        protected global::System.Web.UI.WebControls.GridView gvReport;
     }
 }

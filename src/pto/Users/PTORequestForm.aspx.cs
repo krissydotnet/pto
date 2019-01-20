@@ -11,19 +11,41 @@ namespace pto.Users
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (Session["userid"] == null)
             {
                 Response.Redirect("../Default.aspx");
             }
 
+            this.PTORequestFormCtrl.PTORequestedSuccess += PTORequestFormCtrl_PTORequestedSuccess;
+            this.PTORequestFormCtrl.PTORequestedCancel += PTORequestFormCtrl_PTORequestedCancel;
+            this.PTORequestFormCtrl.PTORequestedExist += PTORequestFormCtrl_PTORequestedExist;
+
             if (!IsPostBack)
             {
+
                 int userID = (int)Session["userid"];
                 PTORequestFormCtrl.NewPTORequest(userID);
                 ClientScript.RegisterStartupScript(this.GetType(), "none", "ShowPopup();", true);
-                lblHeading.Text = "Request Time Off";
-                upModal.Update();
+                //lblHeading.Text = "Request Time Off";
+                //upModal.Update();
             }
+        }
+
+        private void PTORequestFormCtrl_PTORequestedExist(object sender, EventArgs e)
+        {
+            //ClientScript.RegisterStartupScript(this.GetType(), "none", "ShowPopup();", true);
+
+        }
+
+        private void PTORequestFormCtrl_PTORequestedCancel(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
+
+        private void PTORequestFormCtrl_PTORequestedSuccess(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
         }
     }
 }

@@ -36,17 +36,7 @@ namespace pto.Controls
 
         }
 
-        protected void gvNewRequests_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-
-                //e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(gvNewRequests, "Select$" + e.Row.RowIndex);
-                //e.Row.Attributes["style"] = "cursor:pointer";
-
-
-            }
-        }
+        
         protected void ApprovePTO(object sender, EventArgs e)
         {
             int id = Int32.Parse(((sender as LinkButton).CommandArgument).ToString());
@@ -63,63 +53,9 @@ namespace pto.Controls
             }
 
         }
-        protected void ViewPTO(object sender, EventArgs e)
-        {
-            string id = ((sender as LinkButton).CommandArgument).ToString();
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#myModal').modal();", true);
-            connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            data = new DBAccess(connString);
-            
-            PTORequest details = data.GetPTORequestDetailsByID(Int32.Parse(id));
-            lblID.Text = id;
-            lblEmployee.Text = details.Name;
-            if (details.EndDate.Date > details.StartDate.Date)
-            {
-                lblDates.Text = details.StartDate.ToShortDateString() + " - " + details.EndDate.ToShortDateString();
-
-            } else
-            {
-                lblDates.Text = details.StartDate.ToShortDateString();
-            }
-            lblType.Text = details.Description;
-            lblHours.Text = details.Hours.ToString();
-            lblComments.Text = details.Comments;
-            upModal.Update();
+        
+        
 
 
-        }
-        protected void OnSelectedIndexChanged(object sender, EventArgs e)
-        {
-            foreach (GridViewRow row in gvNewRequests.Rows)
-            {
-                if (row.RowIndex == gvNewRequests.SelectedIndex)
-                {
-                    //Response.Write("Testing");
-
-                }
-                else
-                {
-                    //row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
-                    //row.ToolTip = "Click to select this row.";
-                }
-            }
-        }
-
-
-
-        protected void btnApprove_Click1(object sender, EventArgs e)
-        {
-            int id = Int32.Parse(lblID.Text);
-            connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            data = new DBAccess(connString);
-            data.ApprovePTORequest(id);
-            if (!data.error)
-            {
-                Response.Write("Success");
-            } else
-            {
-                //lblErrMsg.Text = data.errorMessage;
-            }
-        }
     }
 }

@@ -205,3 +205,87 @@ Stack Trace:
    at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
    at DataLayer.DBAccess.RunAccrualJob() in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 276
 
+********** 1/19/2019 8:11:36 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: SELECT PTORequests.Id, PTORequests.userid, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, TimeOffType.description  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid  WHERE  (PTORequests.userid = @userid) AND(TimeOffType.credit = 0) AND  ((PTORequests.start_date BETWEEN @start_date AND @end_date) OR  (PTORequests.end_date  BETWEEN @start_date AND @end_date) OR  (PTORequests.start_date <= @start_date AND PTORequests.end_date >= @end_date))
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.PTORequestsInRange(Int32 userid, DateTime start, DateTime end) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 316
+
+********** 1/19/2019 8:11:51 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: SELECT PTORequests.Id, PTORequests.userid, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, TimeOffType.description  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid  WHERE  (PTORequests.userid = @userid) AND(TimeOffType.credit = 0) AND  ((PTORequests.start_date BETWEEN @start_date AND @end_date) OR  (PTORequests.end_date  BETWEEN @start_date AND @end_date) OR  (PTORequests.start_date <= @start_date AND PTORequests.end_date >= @end_date))
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.PTORequestsInRange(Int32 userid, DateTime start, DateTime end) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 316
+
+********** 1/19/2019 8:15:09 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: SELECT PTORequests.Id, PTORequests.userid, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, TimeOffType.description  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid  WHERE  (PTORequests.userid = @userid) AND(TimeOffType.credit = 0) AND  ((PTORequests.start_date BETWEEN @start_date AND @end_date) OR  (PTORequests.end_date  BETWEEN @start_date AND @end_date) OR  (PTORequests.start_date <= @start_date AND PTORequests.end_date >= @end_date))
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.PTORequestsInRange(Int32 userid, DateTime start, DateTime end) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 316
+
+********** 1/19/2019 8:19:19 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: SELECT PTORequests.Id, PTORequests.userid, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, TimeOffType.description  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid  WHERE  (PTORequests.userid = @userid) AND(TimeOffType.credit = 0) AND  ((PTORequests.start_date BETWEEN @start_date AND @end_date) OR  (PTORequests.end_date  BETWEEN @start_date AND @end_date) OR  (PTORequests.start_date <= @start_date AND PTORequests.end_date >= @end_date))
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.PTORequestsInRange(Int32 userid, DateTime start, DateTime end) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 316
+
+********** 1/19/2019 8:21:10 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: SELECT PTORequests.Id, PTORequests.userid, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, TimeOffType.description  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid  WHERE  (PTORequests.userid = @userid) AND(TimeOffType.credit = 0) AND  ((PTORequests.start_date BETWEEN @start_date AND @end_date) OR  (PTORequests.end_date  BETWEEN @start_date AND @end_date) OR  (PTORequests.start_date <= @start_date AND PTORequests.end_date >= @end_date))
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.PTORequestsInRange(Int32 userid, DateTime start, DateTime end) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 316
+
+********** 1/19/2019 8:22:20 PM **********
+Exception Type: System.InvalidOperationException
+Exception: The ConnectionString property has not been initialized.
+Source: SELECT PTORequests.Id, PTORequests.userid, PTORequests.start_date, PTORequests.end_date, PTORequests.hours, TimeOffType.description  FROM     PTORequests INNER JOIN  TimeOffType ON PTORequests.typeid = TimeOffType.typeid  WHERE  (PTORequests.userid = @userid) AND(TimeOffType.credit = 0) AND  ((PTORequests.start_date BETWEEN @start_date AND @end_date) OR  (PTORequests.end_date  BETWEEN @start_date AND @end_date) OR  (PTORequests.start_date <= @start_date AND PTORequests.end_date >= @end_date))
+Stack Trace: 
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at DataLayer.DBAccess.PTORequestsInRange(Int32 userid, DateTime start, DateTime end) in C:\Users\dukesc\source\repos\krissydotnet\pto\Data\DBAccess.cs:line 316
+

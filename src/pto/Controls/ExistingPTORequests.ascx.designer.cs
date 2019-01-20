@@ -7,27 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace pto {
+namespace pto.Controls {
     
     
-    public partial class _Default {
+    public partial class ExistingPTORequests {
         
         /// <summary>
-        /// upModal control.
+        /// lblMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upModal;
+        protected global::System.Web.UI.WebControls.Label lblMessage;
         
         /// <summary>
-        /// LoginForm control.
+        /// gvExistingRequests control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::pto.Controls.LoginForm LoginForm;
+        protected global::System.Web.UI.WebControls.GridView gvExistingRequests;
     }
 }

@@ -188,7 +188,9 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Controls\Admin_Reports.ascx" />
     <Content Include="Controls\CalendarControl.ascx" />
+    <Content Include="Controls\ExistingPTORequests.ascx" />
     <Content Include="Controls\LoginForm.ascx" />
     <Content Include="Controls\NewPTORequests.ascx" />
     <Content Include="App_Data\ErrorLog.txt" />
@@ -245,6 +247,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Controls\PTORequestForm.js" />
+    <Content Include="Controls\User_Reports.ascx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="images\calendar.gif" />
     <Content Include="images\vacation_pic.jpg" />
@@ -268,8 +271,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="styles\panels.css" />
-    <Content Include="styles\reports.css" />
     <Content Include="styles\styles.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -294,6 +295,9 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Main.Master" />
+    <Content Include="WebForm1.aspx" />
+    <Content Include="AdminMaster.master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -338,6 +342,13 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminMaster.master.cs">
+      <DependentUpon>AdminMaster.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminMaster.master.designer.cs">
+      <DependentUpon>AdminMaster.master</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AddPTORequest.aspx.cs">
       <DependentUpon>AddPTORequest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -345,12 +356,26 @@
     <Compile Include="Admin\AddPTORequest.aspx.designer.cs">
       <DependentUpon>AddPTORequest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Admin_Reports.ascx.cs">
+      <DependentUpon>Admin_Reports.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin_Reports.ascx.designer.cs">
+      <DependentUpon>Admin_Reports.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CalendarControl.ascx.cs">
       <DependentUpon>CalendarControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\CalendarControl.ascx.designer.cs">
       <DependentUpon>CalendarControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExistingPTORequests.ascx.cs">
+      <DependentUpon>ExistingPTORequests.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ExistingPTORequests.ascx.designer.cs">
+      <DependentUpon>ExistingPTORequests.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\LoginForm.ascx.cs">
       <DependentUpon>LoginForm.ascx</DependentUpon>
@@ -398,6 +423,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controls\User_Reports.ascx.cs">
+      <DependentUpon>User_Reports.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\User_Reports.ascx.designer.cs">
+      <DependentUpon>User_Reports.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -407,6 +439,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -452,6 +491,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="pto.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="pto.Main" %>
 
 <!DOCTYPE html>
 
@@ -6,17 +6,17 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - PTO Tracking</title>
+    <title><%: Page.Title %> - My ASP.NET Application</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:BundleReference runat="server" Path="~/Content/css" />
-
-    <asp:ContentPlaceHolder ID="head" runat="server">
+        <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
 
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
 </head>
 <body>
     <form runat="server">
@@ -26,7 +26,6 @@
                 <%--Framework Scripts--%>
                 <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
-                <asp:ScriptReference Name="jquery.ui.combined" />  
                 <asp:ScriptReference Name="bootstrap" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
                 <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
@@ -37,11 +36,10 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
-  
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+ <nav class="navbar navbar-expand-md navbar-dark fixed-top">
   <a class="navbar-brand" href="#">PTO Tracking System</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -53,7 +51,7 @@
  
       </li>
       <li class="nav-item" id="lnkAdmin" runat="server" visible="false">
-        <a class="nav-link" runat="server" href="~/Admin">Admin</a>
+        <a class="nav-link disabled" runat="server" href="~/Admin">Admin</a>
       </li>
 
     </ul>
@@ -69,7 +67,7 @@
       </asp:LoginView>
   </div>
 </nav>
-        <main role="main" class="container-fluid">
+        <main role="main" class="container">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
 </main>
@@ -77,3 +75,4 @@
     </form>
 </body>
 </html>
+

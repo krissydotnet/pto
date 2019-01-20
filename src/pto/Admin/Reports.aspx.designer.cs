@@ -22,21 +22,12 @@ namespace pto.Admin {
         protected global::System.Web.UI.WebControls.Panel pnl_ptoRequests;
         
         /// <summary>
-        /// lblReportHeader control.
+        /// Admin_Reports control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblReportHeader;
-        
-        /// <summary>
-        /// gvReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvReport;
+        protected global::pto.Controls.Admin_Reports Admin_Reports;
     }
 }

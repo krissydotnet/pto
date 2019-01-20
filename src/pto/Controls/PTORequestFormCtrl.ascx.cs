@@ -10,11 +10,17 @@ namespace pto.Controls
     {
         string connString;
         DBAccess data;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
 
 
         }
+        public event EventHandler PTORequestedSuccess;
+        public event EventHandler PTORequestedCancel;
+        public event EventHandler PTORequestedExist;
+
+
         public void NewPTORequest(int userid)
         {
             //Used to load control for Employees
@@ -37,6 +43,14 @@ namespace pto.Controls
             Mode.Value = "new";
             UserID.Value = "";
         }
+
+        public void UpdatePTORequest(int pto_ID)
+        {
+            //Used to load control for Admin
+            ptoID.Value = pto_ID.ToString();
+
+        }
+
 
         protected void SetUpForm()
             {
@@ -64,8 +78,9 @@ namespace pto.Controls
 
                 //Reset visibility of panels
                 lblErrorMessage.Visible = false;
-                pnlExistingPTO.Visible = false;
+                //pnlExistingPTO.Visible = false;
                 pnlPTORequestForm.Visible = true;
+
             }
 
 
@@ -81,16 +96,20 @@ namespace pto.Controls
 
             return totalDays;
         }
+
         protected void LoadPTORequest(int id, int userid)
         {
             connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             data = new DBAccess(connString);
 
             //Load PTO Request By ID
-            PTORequest request = data.GetPTORequestByID(id, userid);
+            //PTORequest request = data.GetPTORequestByID(id, userid);
+            PTORequest request = data.GetPTORequestDetailsByID(id);
+
             if (request != null)
             {
-                //ptoType.SelectedValue = request.TypeId.ToString();
+                ptoEmployee.SelectedValue = request.UserId.ToString();
+                ptoType.SelectedValue = request.TypeId.ToString();
                 ptoFrom.Text = request.StartDate.ToShortDateString();
                 ptoTo.Text = request.EndDate.ToShortDateString();
                 if (request.StartDate == request.EndDate)
@@ -108,14 +127,14 @@ namespace pto.Controls
 
         }
 
-        protected bool PTORequestExists(PTORequest request)
+        protected bool PTORequestExists()
         {
-
-
+            connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            data = new DBAccess(connString);
             // Check for existing PTO Requests that fall during current PTO Request
-            DataTable myResults = data.PTORequestsInRange(request.UserId, request.StartDate, request.EndDate);
-            gvExistingRequests.DataSource = myResults;
-            gvExistingRequests.DataBind();
+            DataTable myResults = data.PTORequestsInRange(Int32.Parse(ptoEmployee.SelectedItem.Value),
+                                                        DateTime.Parse(ptoFrom.Text).Date, 
+                                                        DateTime.Parse(ptoTo.Text).Date);
 
             if ((myResults != null) && (myResults.Rows.Count > 0))
             {
@@ -133,6 +152,7 @@ namespace pto.Controls
             lblErrorMessage.Text = data.errorMessage;
             return !data.error;
         }
+
         protected Boolean UpdateData(PTORequest request)
         {
             //Save request
@@ -140,9 +160,12 @@ namespace pto.Controls
             data.UpdatePTORequest(request);
             return !data.error;
         }
+
         protected void Cancel(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            if (PTORequestedCancel != null)
+                this.PTORequestedCancel(this, new EventArgs());
+
         }
 
         protected void SubmitForm(object sender, EventArgs e)
@@ -163,80 +186,67 @@ namespace pto.Controls
                 int hours = Int32.Parse(ptoHours.SelectedValue);
                 request.Hours = GetWorkingDays(request.StartDate, request.EndDate) * hours;
 
-                /*if (!String.IsNullOrEmpty(Request.QueryString["rid"]))
-                {
-                    request.Id = Convert.ToInt32(Request.QueryString["rid"]);
-                    //Update PTORequest if rid in querystring
-                    if (UpdateData(request))
-                    {
-                        // Data saved successfull - redirect to dashboard
-                        Response.Redirect("Default.aspx");
-                    }
-                    else
-                    {
-                        // Error occurred while updating data
-                        lblErrorMessage.Text = "There was an error saving requests.";
-                        lblErrorMessage.Visible = true;
-                    }
-                }
-                else */
-                if (PTORequestExists(request))
-                {
+                
+                //if (PTORequestExists(request))
+                //{
                     // Previous PTO Request overlaps with new PTO request
                     // Hide PTO Request form and show panel with matching PTO Requests
-                    pnlPTORequestForm.Visible = false;
-                    pnlExistingPTO.Visible = true;
-                }
-                else
-                {
+                 //   lblErrorMessage.Text = "There is a PTO request that overlaps with the dates provided.";
+                 //   lblErrorMessage.Visible = true;
+                    //if (PTORequestedExist != null)
+                     //  this.PTORequestedExist(this, new EventArgs());
+
+                //}
+                //else
+                //{
                     if (SaveData(request))
                     {
                         // Data saved successfull - redirect to dashboard
-                        Response.Redirect("Default.aspx");
+                        if (PTORequestedSuccess != null)
+                            this.PTORequestedSuccess(this, new EventArgs());
+
                     }
                     else
                     {
                         // Error occurred while saving data
-                        //lblErrorMessage.Text += "There was an error saving requests.";
+                        lblErrorMessage.Text += "There was an error saving requests.";
                         lblErrorMessage.Visible = true;
                     }
+                //}
+
+
+
+
+            }
+        }
+        protected void EditPTORequest(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(((sender as LinkButton).CommandArgument).ToString());
+            ptoID.Value = id.ToString();
+        }
+
+
+
+        protected void ValidateDates_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            try
+            {
+
+                if (PTORequestExists())
+                {
+                    args.IsValid = false;
+                    
+
                 }
 
-
-
-
             }
-        }
-        protected void gvExistingRequests_RowCommand(Object sender, GridViewCommandEventArgs e)
-        {
-            // If multiple buttons are used in a GridView control, use the
-            // CommandName property to determine which button was clicked.
-            if (e.CommandName == "Edit")
+
+            catch (Exception ex)
             {
-                // Convert the row index stored in the CommandArgument
-                // property to an Integer.
-                int index = Convert.ToInt32(e.CommandArgument);
 
-                // Retrieve the row that contains the button clicked 
-                // by the user from the Rows collection.
-                GridViewRow row = gvExistingRequests.Rows[index];
-                int rID = Int32.Parse(gvExistingRequests.DataKeys[index].Value.ToString());
-                ptoID.Value = rID.ToString();
-                Mode.Value = "edit";
-                // Now you have access to the gridviewrow.
+                args.IsValid = false;
+
             }
-        }
-
-
-
-        protected void gvExistingRequests_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-
-        }
-
-        protected void gvExistingRequests_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 

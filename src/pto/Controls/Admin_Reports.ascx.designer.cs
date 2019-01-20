@@ -10,51 +10,60 @@
 namespace pto.Controls {
     
     
-    public partial class NewPTORequests {
+    public partial class Admin_Reports {
         
         /// <summary>
-        /// lblTotal control.
+        /// lblReportHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotal;
+        protected global::System.Web.UI.WebControls.Label lblReportHeader;
         
         /// <summary>
-        /// divVisibility control.
+        /// pnlEmployeeBalance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField divVisibility;
+        protected global::System.Web.UI.WebControls.Panel pnlEmployeeBalance;
         
         /// <summary>
-        /// gvNewRequests control.
+        /// gvReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvNewRequests;
+        protected global::System.Web.UI.WebControls.GridView gvReport;
         
         /// <summary>
-        /// lblErrorMessage control.
+        /// pnl_EmployeeDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblErrorMessage;
+        protected global::System.Web.UI.WebControls.Panel pnl_EmployeeDetail;
         
         /// <summary>
-        /// ButtonHidden control.
+        /// lblUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonHidden;
+        protected global::System.Web.UI.WebControls.Label lblUserName;
+        
+        /// <summary>
+        /// gvDetail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvDetail;
     }
 }
