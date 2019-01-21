@@ -1,19 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PTORequestForm.aspx.cs" Inherits="pto.Users.PTORequestForm" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMain.Master" AutoEventWireup="true" CodeBehind="PTORequestForm.aspx.cs" Inherits="pto.Users.PTORequestForm" %>
 
 <%@ Register Src="~/Controls/PTORequestFormCtrl.ascx" TagPrefix="uc1" TagName="PTORequestFormCtrl" %>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="../Scripts/jquery-3.3.1.min.js"></script>
-    <script src="../Controls/PTORequestForm.js"></script>
-    <script>
-        function ShowPopup() {
-            $("#btnShowPopup").click();
-        }
-    </script>
-
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainUserContent" runat="server">
     <div class="row">
         <div class="col-md-8">
             <!-- PTORequestForm -->
@@ -58,4 +48,11 @@
 
         </div>
     </div>
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Controls/PTORequestForm.js"></script>
+    <script>
+        function ShowPopup() {
+            $("#btnShowPopup").click();
+        }
+    </script>
 </asp:Content>

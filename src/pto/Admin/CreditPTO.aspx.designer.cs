@@ -7,54 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace pto.Controls {
+namespace pto.Admin {
     
     
-    public partial class User_Reports {
+    public partial class CreditPTO {
         
         /// <summary>
-        /// pnl_ptoRequests control.
+        /// lblModalHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnl_ptoRequests;
+        protected global::System.Web.UI.WebControls.Label lblModalHeader;
         
         /// <summary>
-        /// lblReportHeader control.
+        /// upModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblReportHeader;
+        protected global::System.Web.UI.UpdatePanel upModal;
         
         /// <summary>
-        /// lblRange control.
+        /// CreditPTOCtrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRange;
-        
-        /// <summary>
-        /// lblUserName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserName;
-        
-        /// <summary>
-        /// gvReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvReport;
+        protected global::pto.Controls.CreditPTOCtrl CreditPTOCtrl;
     }
 }

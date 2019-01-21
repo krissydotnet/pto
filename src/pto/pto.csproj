@@ -182,6 +182,7 @@
   <ItemGroup>
     <Content Include="Account\Login.aspx" />
     <Content Include="Admin\AddPTORequest.aspx" />
+    <Content Include="Admin\CreditPTO.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -195,6 +196,7 @@
     <Content Include="Controls\LoginForm.ascx" />
     <Content Include="Controls\NewPTORequests.ascx" />
     <Content Include="App_Data\ErrorLog.txt" />
+    <Content Include="Controls\CreditPTOCtrl.ascx" />
     <Content Include="Controls\PTORequestFormCtrl.ascx" />
     <Content Include="Controls\Reports\EmployeeBalanceReport.ascx" />
     <Content Include="Controls\Reports\EmployeeDetailReport.ascx" />
@@ -250,7 +252,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Controls\PTORequestForm.js" />
-    <Content Include="Controls\User_Reports.ascx" />
+    <Content Include="Controls\Reports\ScheduledPTO.ascx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="images\calendar.gif" />
     <Content Include="images\vacation_pic.jpg" />
@@ -298,7 +300,6 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Main.Master" />
     <Content Include="SiteAdmin.master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -344,12 +345,33 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\CreditPTO.aspx.cs">
+      <DependentUpon>CreditPTO.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CreditPTO.aspx.designer.cs">
+      <DependentUpon>CreditPTO.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\EmployeeCtrl.ascx.cs">
       <DependentUpon>EmployeeCtrl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\EmployeeCtrl.ascx.designer.cs">
       <DependentUpon>EmployeeCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreditPTOCtrl.ascx.cs">
+      <DependentUpon>CreditPTOCtrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\CreditPTOCtrl.ascx.designer.cs">
+      <DependentUpon>CreditPTOCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteMain.master.cs">
+      <DependentUpon>SiteMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteMain.master.designer.cs">
+      <DependentUpon>SiteMain.master</DependentUpon>
     </Compile>
     <Compile Include="SiteAdmin.master.cs">
       <DependentUpon>SiteAdmin.master</DependentUpon>
@@ -446,12 +468,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controls\User_Reports.ascx.cs">
-      <DependentUpon>User_Reports.ascx</DependentUpon>
+    <Compile Include="Controls\Reports\ScheduledPTO.ascx.cs">
+      <DependentUpon>ScheduledPTO.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\User_Reports.ascx.designer.cs">
-      <DependentUpon>User_Reports.ascx</DependentUpon>
+    <Compile Include="Controls\Reports\ScheduledPTO.ascx.designer.cs">
+      <DependentUpon>ScheduledPTO.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -462,13 +484,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Main.Master.cs">
-      <DependentUpon>Main.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Main.Master.designer.cs">
-      <DependentUpon>Main.Master</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -535,6 +550,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="SiteMain.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

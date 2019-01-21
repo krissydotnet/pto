@@ -31,12 +31,17 @@ namespace pto.Admin
         private void PTORequestFormCtrl_PTORequestedCancel(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
+            //ClientScript.RegisterStartupScript(this.GetType(), "none", "$('#myModal').modal('hide');", true);
 
         }
 
         private void PTORequestFormCtrl_PTORequestedSuccess(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
+
+            //ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString(), "$('#modal-dismiss').click();", true);
+            //ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString(), "alert('Hello!I am an alert box!!;');", true);
+
 
         }
     }

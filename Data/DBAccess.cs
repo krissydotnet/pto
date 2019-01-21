@@ -33,6 +33,7 @@ namespace DataLayer
         public bool Admin { get; set; }
         public int TotalPTO { get; set; }
         public int UsedPTO { get; set; }
+        public int BalancePTO { get; set; }
         public int AccrualRate { get; set; }
     }
 
@@ -88,7 +89,7 @@ namespace DataLayer
 
         public User GetUserInfo(int userid)
         {
-            string query = "SELECT userid, name, admin, total_pto, used_pto, accrual_rate   FROM Users where userid=" + userid;
+            string query = "SELECT userid, name, admin, total_pto, used_pto, balance_pto, accrual_rate   FROM Users where userid=" + userid;
             DataTable results = RunQuery(query);
             if ((results != null) && (results.Rows.Count > 0))
             {
@@ -99,6 +100,7 @@ namespace DataLayer
                     Admin = (bool)results.Rows[0]["admin"],
                     TotalPTO = (int)results.Rows[0]["total_pto"],
                     UsedPTO = (int)results.Rows[0]["used_pto"],
+                    BalancePTO = (int)results.Rows[0]["balance_pto"],
                     AccrualRate = Int32.Parse(results.Rows[0]["accrual_rate"].ToString())
                 };
 
@@ -143,7 +145,7 @@ namespace DataLayer
         {
 
 
-            string query = "SELECT Users.name, Users.total_pto - Users.used_pto AS balance_pto, NextEvent.start_date, NextEvent.end_date, NextEvent.hours, NextEvent.description " +
+            string query = "SELECT Users.userid, Users.name, balance_pto, NextEvent.start_date, NextEvent.end_date, NextEvent.hours, NextEvent.description " +
                     " FROM Users LEFT OUTER JOIN " +
                     " (SELECT A.userid, A.start_date, A.end_date, A.hours, B.description, B.credit " +
                     " FROM PTORequests A INNER JOIN " +
@@ -169,11 +171,10 @@ namespace DataLayer
                           " TimeOffType ON PTORequests.typeid = TimeOffType.typeid INNER JOIN " +
                           " Users ON PTORequests.userid = Users.userid " + 
                           " WHERE Users.userid=@userid " +
-                          " AND PTORequests.start_date >= @start " +  
-                          " AND PTORequests.start_date <= @end " +
+                          " AND Convert(DATE, PTORequests.start_date) >= @start " +  
+                          " AND Convert(DATE, PTORequests.start_date) <= @end " +
                           " ORDER BY PTORequests.start_date, TimeOffType.description ";
 
- 
             SqlConnection con = new SqlConnection(conn);
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
@@ -263,7 +264,34 @@ namespace DataLayer
             return (error) ? false : true;
 
         }
-        
+        public bool UpdateUsedPTOBalance(int userid, int hours)
+        {
+            SqlConnection con = new SqlConnection(conn);
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("spUpdatePTOUsedByUser", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("userid", userid);
+                cmd.Parameters.AddWithValue("hours", hours);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                HandleError(ex, "spUpdatePTOUsedByUser");
+
+            }
+            finally
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+
+            return (error) ? false : true;
+
+        }
+
         public bool ApprovePTORequest(int ID)
         {
             SqlConnection con = new SqlConnection(conn);

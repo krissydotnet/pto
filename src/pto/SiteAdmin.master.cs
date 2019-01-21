@@ -13,13 +13,13 @@ namespace pto
         {
             if (Session["userid"] == null)
             {
-                Response.Redirect("../Account/Login.aspx");
+                Response.Redirect("../Default.aspx");
             }
             if ((Session["role"] != null))
             {
                 if (Session["role"] != "admin")
                 {
-                    Response.Redirect("../Account/Login.aspx");
+                    Response.Redirect("../Default.aspx");
                 }
             }
         }

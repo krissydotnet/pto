@@ -18,6 +18,7 @@ namespace pto.Controls.Reports
         {
 
         }
+
         public void LoadEmployeeBalanceReport()
         {
             pnlEmployeeBalance.Visible = true;
@@ -33,6 +34,26 @@ namespace pto.Controls.Reports
             //DataTable myTable = data.Report_EmployeeBalance();
             DataTable myTable = data.Report_EmployeeNextScheduledPTO();
             gvReport.DataSource = myTable;
+            gvReport.DataBind();
+
+        }
+
+        public void LoadEmployeeBalanceReport(int userid)
+        {
+            pnlEmployeeBalance.Visible = true;
+            lblReportHeader.Text = "Overall Balance (as of " + DateTime.Now.ToShortDateString() + ")";
+            LoadEmployeeBalance(userid);
+        }
+
+        private void LoadEmployeeBalance(int userid)
+        {
+            connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            data = new DBAccess(connString);
+
+            DataTable myTable = data.Report_EmployeeNextScheduledPTO();
+            DataView dv = new DataView(myTable);
+            dv.RowFilter = "userid = " + userid;
+            gvReport.DataSource = dv;
             gvReport.DataBind();
 
         }

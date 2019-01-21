@@ -13,6 +13,24 @@ namespace pto.Users {
     public partial class Default {
         
         /// <summary>
+        /// lblTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotal;
+        
+        /// <summary>
+        /// lblUsedPTO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUsedPTO;
+        
+        /// <summary>
         /// lblBalance control.
         /// </summary>
         /// <remarks>
@@ -22,42 +40,6 @@ namespace pto.Users {
         protected global::System.Web.UI.WebControls.Label lblBalance;
         
         /// <summary>
-        /// lblFuturePTO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFuturePTO;
-        
-        /// <summary>
-        /// lblAccrual control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAccrual;
-        
-        /// <summary>
-        /// lnkReportPTOTaken control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkReportPTOTaken;
-        
-        /// <summary>
-        /// lnkScheduledPTO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkScheduledPTO;
-        
-        /// <summary>
         /// CalendarControl control.
         /// </summary>
         /// <remarks>
@@ -65,32 +47,5 @@ namespace pto.Users {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::pto.Controls.CalendarControl CalendarControl;
-        
-        /// <summary>
-        /// lblModalHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblModalHeader;
-        
-        /// <summary>
-        /// reportsModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel reportsModal;
-        
-        /// <summary>
-        /// User_Reports control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::pto.Controls.User_Reports User_Reports;
     }
 }

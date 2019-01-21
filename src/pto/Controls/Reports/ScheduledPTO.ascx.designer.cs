@@ -7,36 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace pto {
+namespace pto.Controls {
     
     
-    public partial class Main {
+    public partial class ScheduledPTO {
         
         /// <summary>
-        /// head control.
+        /// pnl_ptoRequests control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Panel pnl_ptoRequests;
         
         /// <summary>
-        /// lnkAdmin control.
+        /// lblUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lnkAdmin;
+        protected global::System.Web.UI.WebControls.Label lblUserName;
         
         /// <summary>
-        /// MainContent control.
+        /// gvReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.GridView gvReport;
     }
 }

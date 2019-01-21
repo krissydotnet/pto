@@ -53,9 +53,32 @@ namespace pto.Controls
             }
 
         }
-        
-        
 
+        protected void gvNewRequests_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DataRowView dr = (DataRowView)e.Row.DataItem;
 
+                DateTime start_date = DateTime.Parse(dr["start_date"].ToString());
+                DateTime end_date = DateTime.Parse(dr["end_date"].ToString());
+                Label lblDates = e.Row.FindControl("lblDates") as Label;
+                String PTOType = dr["description"].ToString();
+                String Comments = dr["comments"].ToString();
+                int Hours = Convert.ToInt32(dr["hours"]);
+                Label lblPTOType = e.Row.FindControl("lblPTOType") as Label;
+                lblPTOType.Text = PTOType;
+                Label lblComments = e.Row.FindControl("lblComments") as Label;
+                lblComments.Text = Comments;
+                Label lblHours = e.Row.FindControl("lblHours") as Label;
+                lblHours.Text = Hours.ToString() + " hours ";
+
+                lblDates.Text = start_date.ToShortDateString();
+                if (start_date.Date != end_date.Date)
+                {
+                    lblDates.Text += " - " + end_date.ToShortDateString();
+                }
+            }
+        }
     }
 }

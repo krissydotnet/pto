@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SiteAdmin.master.cs" Inherits="pto.SiteAdmin" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SiteMain.master.cs" Inherits="pto.SiteMain" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../Scripts/jquery-3.3.1.min.js"></script>
@@ -20,29 +20,22 @@
 
             <nav class="sidebar" id="sidebar">
                 <div class="sidebar-header">
-                    <h3>Admin</h3>
+                    <h3>My Info</h3>
                 </div>
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="~/Admin/Default.aspx" runat="server">
+                            <a class="nav-link" href="~/Users/Default.aspx" runat="server">
                                 <span data-feather="home"></span>
                                 <i class="fa fa-home"></i>
                                 Dashboard 
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="~/Admin/AddPTORequest.aspx" runat="server">
+                            <a class="nav-link" href="~/Users/PTORequestForm.aspx" runat="server">
                                 <span data-feather="add"></span>
                                 <i class="fa fa-plus-square"></i>
-                                Add PTO Request
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Admin/CreditPTO.aspx" runat="server">
-                                <span data-feather="add"></span>
-                                <i class="fa fa-plus-square"></i>
-                                Credit PTO
+                                Request Time Off
                             </a>
                         </li>
                         <li>
@@ -50,15 +43,14 @@
                                 <span data-feather="menu"></span><i class="fa fa-table"></i> Reports</a>
                             <ul class="collapse list-unstyled" id="reportSubmenu">
                                 <li>
-                                    <a class="nav-link" href="~/Admin/Reports.aspx?rid=1" runat="server">Overall Employee Balance
+                                    <a class="nav-link" href="~/Users/Reports.aspx?rid=1" runat="server">PTO Taken Year To Date
                                     </a></li>
                                 <li>
-                                    <a class="nav-link" href="Reports.aspx?rid=2">Employee Detail Report
+                                    <a class="nav-link" href="~/Users/Reports.aspx?rid=2" runat="server">PTO Overview
                                     </a></li>
                                                                 <li>
-                                    <a class="nav-link" href="Reports.aspx?rid=3">Scheduled PTO
+                                    <a class="nav-link" href="~/Users/Reports.aspx?rid=3" runat="server">Schedule PTO
                                     </a></li>
-
                             </ul>
                         </li>
 
@@ -81,7 +73,7 @@
                 </div>
             </nav>
             <div class="container">
-                <asp:ContentPlaceHolder ID="MainAdminContent" runat="server">
+                <asp:ContentPlaceHolder ID="MainUserContent" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
         </div>

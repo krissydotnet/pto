@@ -13,12 +13,75 @@ namespace pto.Users {
     public partial class Reports {
         
         /// <summary>
-        /// User_Reports control.
+        /// pnl_EmployeeDetailReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::pto.Controls.User_Reports User_Reports;
+        protected global::System.Web.UI.WebControls.Panel pnl_EmployeeDetailReport;
+        
+        /// <summary>
+        /// lblDetailDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDetailDate;
+        
+        /// <summary>
+        /// EmployeeDetailReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::pto.Controls.Reports.EmployeeDetailReport EmployeeDetailReport;
+        
+        /// <summary>
+        /// pnl_EmployeeBalanceReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl_EmployeeBalanceReport;
+        
+        /// <summary>
+        /// EmployeeBalanceReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::pto.Controls.Reports.EmployeeBalanceReport EmployeeBalanceReport;
+        
+        /// <summary>
+        /// pnl_ScheduledPTO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl_ScheduledPTO;
+        
+        /// <summary>
+        /// lblBalanceDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBalanceDate;
+        
+        /// <summary>
+        /// ScheduledPTO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::pto.Controls.ScheduledPTO ScheduledPTO;
     }
 }

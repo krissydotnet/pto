@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace pto.Controls {
+namespace pto {
     
     
-    public partial class CalendarControl {
+    public partial class SiteMain {
         
         /// <summary>
-        /// Calendar1 control.
+        /// MainUserContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar1;
-        
-        /// <summary>
-        /// gvFuturePTO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvFuturePTO;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainUserContent;
     }
 }

@@ -7,11 +7,15 @@ using System.Web.UI.WebControls;
 
 namespace pto
 {
-    public partial class Main : System.Web.UI.MasterPage
+    public partial class SiteMain : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["userid"] == null)
+            {
+                Response.Redirect("../Default.aspx");
+            }
+            
         }
     }
 }

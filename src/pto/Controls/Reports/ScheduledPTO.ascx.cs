@@ -9,7 +9,7 @@ using System.Data;
 
 namespace pto.Controls
 {
-    public partial class User_Reports : System.Web.UI.UserControl
+    public partial class ScheduledPTO : System.Web.UI.UserControl
     {
         string connString;
         DBAccess data;
@@ -25,16 +25,15 @@ namespace pto.Controls
             int userid = uid;
             string name = username;
             lblUserName.Text = name;
-            lblReportHeader.Text = "Employee Detail Report: PTO Taken Year To Date";
 
             DateTime startDate = new DateTime(DateTime.Now.Year, 1, 1);
             DateTime endDate = DateTime.Today;
-            lblRange.Text = "as of " + endDate.ToShortDateString();
             gvReport.DataSource = data.Report_EmployeeDetail(userid, startDate, endDate);
             gvReport.DataBind();
             gvReport.Columns[3].Visible = true;
             pnl_ptoRequests.Visible = true;
         }
+
         public void LoadScheduledPTO(int uid, string username)
         {
             connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -42,11 +41,8 @@ namespace pto.Controls
             int userid = uid;
             string name = username;
             lblUserName.Text = name;
-            lblReportHeader.Text = "Employee Detail Report: PTO Remaining";
-
             DateTime startDate = DateTime.Today;
             DateTime endDate = new DateTime(DateTime.Now.Year, 12, 31);
-            lblRange.Text = "as of " + startDate.ToShortDateString();
             DataTable myTable = data.Report_EmployeeDetail(userid, startDate, endDate);
             gvReport.DataSource = myTable;
             gvReport.DataBind();

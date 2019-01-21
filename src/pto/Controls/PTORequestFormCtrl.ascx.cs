@@ -149,6 +149,11 @@ namespace pto.Controls
             //Save request
             data = new DBAccess(connString);
             data.InsertPTORequest(request);
+            if (request.StartDate <= DateTime.Now)
+            {
+                data.UpdateUsedPTOBalance(request.UserId, request.Hours);
+            }
+            // If PTORequest already accured need to subtract from pto_taken
             lblErrorMessage.Text = data.errorMessage;
             return !data.error;
         }

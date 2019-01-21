@@ -1,14 +1,11 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="User_Reports.ascx.cs" Inherits="pto.Controls.User_Reports" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ScheduledPTO.ascx.cs" Inherits="pto.Controls.ScheduledPTO" %>
 <asp:Panel ID="pnl_ptoRequests" Visible="false"  runat="server">
             <section id="ptoRequests">
                 <div class="form-horizontal">
-                    <div class="report-header">
-                        <asp:Label ID="lblReportHeader" runat="server" Text="Label"></asp:Label> (<asp:Label ID="lblRange" runat="server" Text=""></asp:Label>)
-                    </div>
                     <div class="report-employee">
                     Employee: <asp:Label ID="lblUserName" runat="server"  Text="Employee Name"></asp:Label>
                     </div>
-                    <asp:GridView CssClass="table table-hover table-striped" AutoGenerateColumns="false"  ID="gvReport" OnRowDataBound="gvReport_RowDataBound" runat="server">
+                    <asp:GridView CssClass="table table-hover table-striped" AutoGenerateColumns="false"  ID="gvReport" EmptyDataText="No Scheduled PTO found!" OnRowDataBound="gvReport_RowDataBound" runat="server">
                              <Columns>
                                  <asp:TemplateField HeaderText="Date">
                                      <ItemTemplate>

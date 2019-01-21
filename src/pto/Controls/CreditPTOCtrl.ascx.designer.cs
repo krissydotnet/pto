@@ -7,81 +7,90 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace pto.Admin {
+namespace pto.Controls {
     
     
-    public partial class Reports {
+    public partial class CreditPTOCtrl {
         
         /// <summary>
-        /// pnl_EmployeeDetailReport control.
+        /// pnlPTOCreditForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnl_EmployeeDetailReport;
+        protected global::System.Web.UI.WebControls.Panel pnlPTOCreditForm;
         
         /// <summary>
-        /// EmployeeCtrl control.
+        /// rowEmployee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::pto.Controls.EmployeeCtrl EmployeeCtrl;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl rowEmployee;
         
         /// <summary>
-        /// rptEmployeeDetailReport control.
+        /// ptoEmployee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptEmployeeDetailReport;
+        protected global::System.Web.UI.WebControls.DropDownList ptoEmployee;
         
         /// <summary>
-        /// pnl_EmployeeBalanceReport control.
+        /// ptoHours control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnl_EmployeeBalanceReport;
+        protected global::System.Web.UI.WebControls.DropDownList ptoHours;
         
         /// <summary>
-        /// EmployeeBalanceReport control.
+        /// ptoComments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::pto.Controls.Reports.EmployeeBalanceReport EmployeeBalanceReport;
+        protected global::System.Web.UI.WebControls.TextBox ptoComments;
         
         /// <summary>
-        /// pnlScheduledPTO control.
+        /// Mode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlScheduledPTO;
+        protected global::System.Web.UI.WebControls.HiddenField Mode;
         
         /// <summary>
-        /// EmployeeCtrl1 control.
+        /// UserID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::pto.Controls.EmployeeCtrl EmployeeCtrl1;
+        protected global::System.Web.UI.WebControls.HiddenField UserID;
         
         /// <summary>
-        /// rptScheduledPTO control.
+        /// ptoID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptScheduledPTO;
+        protected global::System.Web.UI.WebControls.HiddenField ptoID;
+        
+        /// <summary>
+        /// lblErrorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorMessage;
     }
 }

@@ -14,7 +14,7 @@
             <!--  Left Container -->
             <uc1:NewPTORequests runat="server" ID="NewPTORequests" />
 
-
+            <!-- 
             <div class="custom-card" id="reports-panel">
                 <div class="custom-card-title">
                     <h3 class="custom-title">Reports
@@ -27,6 +27,7 @@
 
                 </div>
             </div>
+                -->
         </div>
         <div class="right-container">
             <!-- Right Container -->

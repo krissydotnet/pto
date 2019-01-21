@@ -41,6 +41,11 @@ namespace pto.Controls.Reports
                 int hours = int.Parse(dr["hours"].ToString());
                 bool credit = bool.Parse(dr["credit"].ToString());
                 Label total = e.Row.FindControl("lblBalance") as Label;
+                Label lblCredit = e.Row.FindControl("lblCredit") as Label;
+                if (hours <= 0)
+                {
+                    lblCredit.Visible = false;
+                }
                 int subtotal = 0;
                 if (credit)
                 {

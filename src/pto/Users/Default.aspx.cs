@@ -21,7 +21,7 @@ namespace pto.Users
             {
                 Response.Redirect("~/");
             }
-           
+
 
             int userID = (int)Session["userid"];
             LoadSummary(userID);
@@ -32,38 +32,14 @@ namespace pto.Users
             connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             data = new DBAccess(connString);
             User myUser = data.GetUserInfo(userID);
-            lblBalance.Text = myUser.TotalPTO.ToString();
-            lblFuturePTO.Text = myUser.UsedPTO.ToString();
-            DateTime endOfYear = new DateTime(DateTime.Now.Year, 12, 31);
-            int months = endOfYear.Month - DateTime.Today.Month;
-            int futureAccrual = months * myUser.AccrualRate;
-            lblAccrual.Text = futureAccrual.ToString();
+            lblTotal.Text = myUser.TotalPTO.ToString();
+            lblUsedPTO.Text = myUser.UsedPTO.ToString();
+            lblBalance.Text = myUser.BalancePTO.ToString();
+            //DateTime endOfYear = new DateTime(DateTime.Now.Year, 12, 31);
+            //int months = endOfYear.Month - DateTime.Today.Month;
+            //int futureAccrual = months * myUser.AccrualRate;
+            //lblAccrual.Text = futureAccrual.ToString();
         }
-       /* protected void btAddPTORequest_Click(object sender, EventArgs e)
-        {
-            int userID = (int)Session["userid"];
-            PTORequestForm.NewPTORequest(userID);
-            pnlPTORequest.Visible = true;
-        }
-        */
-        protected void lnkReportPTOTaken_Click(object sender, EventArgs e)
-        {
-            int userid = Convert.ToInt32(Session["userid"]);
-            string username = Session["username"].ToString();
-            User_Reports.LoadPTODetailsToDate(userid, username);
-            lblModalHeader.Text = "Report";
-            ClientScript.RegisterStartupScript(this.GetType(), "none", "ShowPopup();", true);
-
-        }
-
-        protected void lnkScheduledPTO_Click(object sender, EventArgs e)
-        {
-            int userid = Convert.ToInt32(Session["userid"]);
-            string username = Session["username"].ToString();
-            User_Reports.LoadScheduledPTO(userid, username);
-            lblModalHeader.Text = "Report";
-            ClientScript.RegisterStartupScript(this.GetType(), "none", "ShowPopup();", true);
-
-        }
+       
     }
 }

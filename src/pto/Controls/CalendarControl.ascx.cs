@@ -47,36 +47,31 @@ namespace pto.Controls
                     Calendar1.SelectedDates.Add(dt);
                     list.Add(dt);
                 }
-                
+
             }
             //Session["SelectedDates"] = list;
-            FuturePTO.DataSource = myTable;
-            FuturePTO.DataBind();
+            gvFuturePTO.DataSource = myTable;
+            gvFuturePTO.DataBind();
 
         }
 
-        protected void FuturePTO_ItemDataBound(object sender, RepeaterItemEventArgs e)
+
+
+        protected void gvFuturePTO_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //Reference the Repeater Item.
-                RepeaterItem item = e.Item;
-                DataRowView dr = (DataRowView)e.Item.DataItem;
-                string nextDate = "[none]";
-
-                if (dr["start_date"] != DBNull.Value)
+                DataRowView dr = (DataRowView)e.Row.DataItem;
+                DateTime start_date = DateTime.Parse(dr["start_date"].ToString());
+                DateTime end_date = DateTime.Parse(dr["end_date"].ToString());
+                Label lblDates = e.Row.FindControl("lblDates") as Label;
+                lblDates.Text = start_date.ToShortDateString();
+                if (start_date.Date != end_date.Date)
                 {
-                    nextDate = Convert.ToDateTime(dr["start_date"]).ToShortDateString();
+                    lblDates.Text += " - " + end_date.ToShortDateString();
                 }
+                
 
-                if (dr["end_date"] != DBNull.Value && dr["end_date"] != dr["start_date"])
-                {
-                    nextDate += " - " + Convert.ToDateTime(dr["end_date"]).ToShortDateString();
-                }
-
-
-                Label lblNextEventDate = item.FindControl("lblDates") as Label;
-                lblNextEventDate.Text = nextDate;
             }
         }
     }

@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using DataLayer;
 using System.Data;
 using pto.Controls.Reports;
+using pto.Controls;
 
 namespace pto.Admin
 {
@@ -44,6 +45,10 @@ namespace pto.Admin
                     pnl_EmployeeDetailReport.Visible = true;
                     LoadEmployeeDetailReport();
                     break;
+                case 3:
+                    pnlScheduledPTO.Visible = true;
+                    LoadScheduledPTO();
+                    break;
                 default:
                     break;
                
@@ -80,6 +85,39 @@ namespace pto.Admin
     
             }
 
+
+
+        }
+        protected void LoadScheduledPTO()
+        {
+
+            // Load Employee Data
+            DataTable EmployeeList = EmployeeCtrl1.GetEmployeeList();
+            if (EmployeeCtrl1.EmployeeID != 0)
+            {
+                DataView dv = new DataView(EmployeeList);
+                dv.RowFilter = "userid = " + EmployeeCtrl1.EmployeeID;
+                rptScheduledPTO.DataSource = dv;
+            }
+            else
+            {
+                rptScheduledPTO.DataSource = EmployeeList;
+            }
+
+            rptScheduledPTO.DataBind();
+        }
+
+        protected void rptScheduledPTO_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item ||
+        e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+
+                DataRowView employee = (DataRowView)e.Item.DataItem;
+                ScheduledPTO control = (ScheduledPTO)e.Item.FindControl("ScheduledPTO");
+                control.LoadScheduledPTO(Convert.ToInt32(employee["userid"]), Convert.ToString(employee["name"]));
+
+            }
 
         }
     }

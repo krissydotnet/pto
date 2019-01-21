@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="AddPTORequest.aspx.cs" Inherits="pto.Admin.AddPTORequest" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteAdmin.master" AutoEventWireup="true" CodeBehind="CreditPTO.aspx.cs" Inherits="pto.Admin.CreditPTO" %>
 
-<%@ Register Src="~/Controls/PTORequestFormCtrl.ascx" TagPrefix="uc1" TagName="PTORequestFormCtrl" %>
+<%@ Register Src="~/Controls/CreditPTOCtrl.ascx" TagPrefix="uc1" TagName="CreditPTOCtrl" %>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainAdminContent" runat="server">
-     <button type="button" style="display: none;" id="btnShowPopup" class="btn btn-primary btn-lg"
+<asp:Content ID="Content1" ContentPlaceHolderID="MainAdminContent" runat="server">
+   <button type="button" style="display: none;" id="btnShowPopup" class="btn btn-primary btn-lg"
                 data-toggle="modal" data-backdrop="static" data-target="#myModal">
             </button>
     
@@ -23,7 +23,7 @@
                                 <div class="modal-body">
                                     <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="true" UpdateMode="Always">
                                         <ContentTemplate>
-                                            <uc1:PTORequestFormCtrl runat="server" ID="PTORequestFormCtrl" />
+                                            <uc1:CreditPTOCtrl runat="server" id="CreditPTOCtrl" />
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </div>
@@ -35,12 +35,7 @@
                         </div>
                     </div>
 
-            
-            <!-- End PTORequestForm -->
-            <!-- Success Notification -->
-    <!-- Small modal -->
-
-     <script>
+         <script>
         function ShowPopup() {
             $("#btnShowPopup").click();
          }
@@ -49,4 +44,4 @@
             $("#modal-dismiss").click();
         }
     </script>
-</asp:Content>   
+</asp:Content>

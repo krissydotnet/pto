@@ -5,7 +5,7 @@
         Employee:
         <asp:Label ID="lblUserName" runat="server" Text="Employee Name"></asp:Label>
     </div>
-    <asp:GridView CssClass="table table-hover table-striped" AutoGenerateColumns="false" ID="gvReport" OnRowDataBound="gvDetail_RowDataBound" runat="server">
+    <asp:GridView CssClass="table table-hover table-striped" EmptyDataText="No data found!" AutoGenerateColumns="false" ID="gvReport" OnRowDataBound="gvDetail_RowDataBound" runat="server">
         <Columns>
             <asp:TemplateField HeaderText="Date">
                 <ItemTemplate>
