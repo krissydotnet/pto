@@ -25,6 +25,11 @@ namespace pto.Users
             {
 
                 int userID = (int)Session["userid"];
+                if (Request.QueryString["date"] != null)
+                {
+                    string startdate = Request.QueryString["date"].ToString();
+                    PTORequestFormCtrl.NewPTORequest(userID, startdate);
+                }
                 PTORequestFormCtrl.NewPTORequest(userID);
                 ClientScript.RegisterStartupScript(this.GetType(), "none", "ShowPopup();", true);
                 //lblHeading.Text = "Request Time Off";

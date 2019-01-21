@@ -18,6 +18,8 @@ namespace pto.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             EmployeeCtrl.OnEmployeeChange += EmployeeCtrl_OnEmployeeChange;
+            EmployeeCtrl1.OnEmployeeChange += EmployeeCtrl1_OnEmployeeChange;
+
             {
                 if ((Request.QueryString["rid"] != null))
                 {
@@ -25,6 +27,11 @@ namespace pto.Admin
                 }
                 
             }
+        }
+
+        private void EmployeeCtrl1_OnEmployeeChange(object sender, EventArgs e)
+        {
+            LoadScheduledPTO();
         }
 
         private void EmployeeCtrl_OnEmployeeChange(object sender, EventArgs e)
@@ -72,6 +79,7 @@ namespace pto.Admin
             
             rptEmployeeDetailReport.DataBind();
         }
+
 
         protected void rptEmployeeDetailReport_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {

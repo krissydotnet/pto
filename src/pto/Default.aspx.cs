@@ -15,11 +15,11 @@ namespace pto
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userid"] == null)
-            {
+            //if (Session["userid"] == null)
+            //{
                 this.LoginForm.LoginSuccess += LoginForm_LoginSuccess;
                 LoadLoginForm();
-            }
+            //}
         }
 
         private void LoginForm_LoginSuccess(object sender, EventArgs e)

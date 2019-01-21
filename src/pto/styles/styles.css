@@ -299,11 +299,8 @@ ul ul a {
     text-align: right;
 }
 .custom-card-body {
-    display: flex;
-    justify-content: center;
-    align-content: center;
+
     padding: 1rem;
-    
 }
 .custom-card-body ul {
     list-style-type: none;
@@ -320,6 +317,15 @@ ul ul a {
 
 .custom-card-body a {
     text-decoration: none;
+}
+.mygrid .row .mygrid-label {
+    font-size: .8rem;
+    text-align: left;
+    font-weight: bold;
+}
+.mygrid .row .mygrid-content {
+    text-align: left;
+    
 }
 
 /* Summary Styles */

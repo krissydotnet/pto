@@ -21,12 +21,19 @@ namespace pto.Users
             {
                 Response.Redirect("~/");
             }
+            this.CalendarControl.SelectedDate += CalendarControl_SelectedDate;
 
 
             int userID = (int)Session["userid"];
             LoadSummary(userID);
             CalendarControl.LoadFuturePTORequests(userID);
         }
+
+        private void CalendarControl_SelectedDate(object sender, EventArgs e)
+        {
+            Response.Redirect("PTORequestForm.aspx?date=" + CalendarControl.DateSelected);
+        }
+
         protected void LoadSummary(int userID)
         {
             connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;

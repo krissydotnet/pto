@@ -21,13 +21,18 @@ namespace pto.Controls
         public event EventHandler PTORequestedExist;
 
 
-        public void NewPTORequest(int userid)
+        public void NewPTORequest(int userid, string startdate = "")
         {
             //Used to load control for Employees
             connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             data = new DBAccess(connString);
 
             SetUpForm();
+            if (startdate != "")
+            {
+                ptoFrom.Text = startdate;
+                ptoTo.Text = startdate;
+            }
             Mode.Value = "new";
             UserID.Value = userid.ToString();
             ptoEmployee.SelectedValue = userid.ToString();
@@ -103,7 +108,6 @@ namespace pto.Controls
             data = new DBAccess(connString);
 
             //Load PTO Request By ID
-            //PTORequest request = data.GetPTORequestByID(id, userid);
             PTORequest request = data.GetPTORequestDetailsByID(id);
 
             if (request != null)

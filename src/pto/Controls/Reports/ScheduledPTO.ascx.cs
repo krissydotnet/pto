@@ -71,6 +71,17 @@ namespace pto.Controls
 
                 total.Text = subtotal.ToString();
                 runningTotal = subtotal;
+
+                // Format Dates
+                DateTime start_date = DateTime.Parse(dr["start_date"].ToString());
+                DateTime end_date = DateTime.Parse(dr["end_date"].ToString());
+                Label lblDates = e.Row.FindControl("lblDates") as Label;
+                lblDates.Text = start_date.ToShortDateString();
+                if (start_date.Date != end_date.Date)
+                {
+                    lblDates.Text += " - " + end_date.ToShortDateString();
+                }
+
             }
 
         }

@@ -45,11 +45,11 @@ namespace pto.Users
                     EmployeeDetailReport.LoadPTODetailsToDate(userid, username);
                     break;
                 case 2:
-                    lblBalanceDate.Text = DateTime.Now.ToShortDateString();
                     pnl_EmployeeBalanceReport.Visible = true;
                     EmployeeBalanceReport.LoadEmployeeBalanceReport(userid);
                     break;
                 case 3:
+                    lblBalanceDate.Text = DateTime.Now.ToShortDateString();
                     pnl_ScheduledPTO.Visible = true;
                     ScheduledPTO.LoadScheduledPTO(userid, username);
                     break;

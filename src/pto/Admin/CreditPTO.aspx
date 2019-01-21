@@ -14,7 +14,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">
-                                        <asp:Label ID="lblModalHeader" runat="server" Text="Request Time Off"></asp:Label>
+                                        <asp:Label ID="lblModalHeader" runat="server" Text="Credit PTO"></asp:Label>
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" id="modal-close" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>

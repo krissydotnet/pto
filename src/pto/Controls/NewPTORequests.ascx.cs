@@ -32,7 +32,7 @@ namespace pto.Controls
             DataTable myTable = data.Report_NewPTORequests();
             gvNewRequests.DataSource = myTable;
             gvNewRequests.DataBind();
-            lblTotal.Text = myTable.Rows.Count.ToString();
+            //lblTotal.Text = myTable.Rows.Count.ToString();
 
         }
 
@@ -79,6 +79,11 @@ namespace pto.Controls
                     lblDates.Text += " - " + end_date.ToShortDateString();
                 }
             }
+        }
+
+        protected void rptNewRequests_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+
         }
     }
 }

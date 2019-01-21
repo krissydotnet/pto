@@ -9,8 +9,7 @@
                              <Columns>
                                  <asp:TemplateField HeaderText="Date">
                                      <ItemTemplate>
-                                         <asp:Label ID="lblStartDate" runat="server" Text='<%# Eval("start_date", "{0:MM/dd/yyyy}") %>'></asp:Label>
-                                         <asp:Label ID="lblEndDate" runat="server" Text='<%# Eval("end_date", "- {0:MM/dd/yyyy}") %>'></asp:Label>
+                                         <asp:Label ID="lblDates" runat="server" Text=""></asp:Label>
 
                                      </ItemTemplate>
                                  </asp:TemplateField>

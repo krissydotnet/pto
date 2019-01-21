@@ -47,7 +47,7 @@
                         <asp:Repeater ID="rptScheduledPTO" OnItemDataBound="rptScheduledPTO_ItemDataBound" runat="server">
                             <HeaderTemplate>
                                 <div class="report-header">
-                                    Employee Detail Report: Scheduled PTO (as of <%# DateTime.Now.ToShortDateString() %>
+                                    Employee Detail Report: Scheduled PTO (as of <%# DateTime.Now.ToShortDateString() %>)
                                 </div>
                             </HeaderTemplate>
                             <ItemTemplate>

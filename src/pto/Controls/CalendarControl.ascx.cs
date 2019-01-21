@@ -13,18 +13,13 @@ namespace pto.Controls
     {
         string connString;
         DBAccess data;
+        public string DateSelected { get; set; }
 
+        public event EventHandler SelectedDate;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["SelectedDates"] != null)
-            {
-                List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
-                foreach (DateTime dt in newList)
-                {
-                    Calendar1.SelectedDates.Add(dt);
-                }
-            }
+
         }
 
         public void LoadFuturePTORequests(int userid)
@@ -32,11 +27,20 @@ namespace pto.Controls
             connString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             data = new DBAccess(connString);
 
-            List<DateTime> list = new List<DateTime>();
             DateTime startDate = DateTime.Today;
             DateTime endDate = new DateTime(DateTime.Now.Year, 12, 31);
 
             DataTable myTable = data.PTORequestsInRange(userid, startDate, endDate);
+            LoadCalendar(myTable);
+
+            gvFuturePTO.DataSource = myTable;
+            gvFuturePTO.DataBind();
+            ViewState["futurePTO"] = myTable;
+        }
+        protected void LoadCalendar(DataTable myTable)
+        {
+            List<DateTime> list = new List<DateTime>();
+
             foreach (DataRow row in myTable.Rows)
             {
                 DateTime start = DateTime.Parse(row["start_date"].ToString());
@@ -49,12 +53,8 @@ namespace pto.Controls
                 }
 
             }
-            //Session["SelectedDates"] = list;
-            gvFuturePTO.DataSource = myTable;
-            gvFuturePTO.DataBind();
-
+            
         }
-
 
 
         protected void gvFuturePTO_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -73,6 +73,21 @@ namespace pto.Controls
                 
 
             }
+        }
+
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+
+            DateSelected = Calendar1.SelectedDate.ToShortDateString();
+            DataTable futurePTO = (DataTable)ViewState["futurePTO"];
+            if (futurePTO != null)
+            {
+                LoadCalendar(futurePTO);
+            }
+
+            if (SelectedDate != null)
+                this.SelectedDate(this, new EventArgs());
+
         }
     }
 }
