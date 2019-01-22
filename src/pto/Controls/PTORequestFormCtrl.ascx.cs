@@ -88,15 +88,20 @@ namespace pto.Controls
 
             }
 
+        public static bool IsWeekday(DateTime date)
+        {
+            return (date.DayOfWeek != DayOfWeek.Saturday
+                    && date.DayOfWeek != DayOfWeek.Sunday);
+        }
 
         public static int GetWorkingDays(DateTime from, DateTime to)
         {
-            var totalDays = 1;
-            for (var date = from; date < to; date = date.AddDays(1))
+            var totalDays = 0;
+            for (var date = from; date <= to; date = date.AddDays(1))
             {
-                if (date.DayOfWeek != DayOfWeek.Saturday
-                    && date.DayOfWeek != DayOfWeek.Sunday)
+                if (IsWeekday(date)) { 
                     totalDays++;
+                }
             }
 
             return totalDays;
@@ -244,8 +249,6 @@ namespace pto.Controls
                 if (PTORequestExists())
                 {
                     args.IsValid = false;
-                    
-
                 }
 
             }
@@ -255,6 +258,16 @@ namespace pto.Controls
 
                 args.IsValid = false;
 
+            }
+        }
+
+        protected void ValidateWeekDay_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            DateTime startDate = DateTime.Parse(ptoFrom.Text).Date;
+            DateTime endDate = DateTime.Parse(ptoTo.Text).Date;
+
+            if (!IsWeekday(startDate) || !IsWeekday(endDate)) {
+                args.IsValid = false;
             }
         }
     }

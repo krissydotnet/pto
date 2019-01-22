@@ -40,6 +40,15 @@ namespace pto {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl logOff;
         
         /// <summary>
+        /// logOffbtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton logOffbtn;
+        
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

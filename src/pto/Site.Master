@@ -58,7 +58,9 @@
 
     </ul>
     <ul class="navbar-nav navbar-right" id="logOff" runat="server">
-          <li class="nav-item" ><a class="nav-link" runat="server"  href="~/">Log Off</a></li>
+          <li class="nav-item" >
+              <asp:LinkButton id="logOffbtn" CssClass="nav-link"  runat="server" OnClick="logOffbtn_Click">Log Off</asp:LinkButton>
+              </li>
     </ul>
 
   </div>

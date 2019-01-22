@@ -79,11 +79,18 @@ namespace pto
             }
             if ((Session["userid"] != null))
             {
-
+                logOff.Visible = true;
+            } else
+            {
+                logOff.Visible = false;
             }
         }
 
-
+        protected void logOffbtn_Click(object sender, EventArgs e)
+        {
+            Session["userid"] = null;
+            Response.Redirect("~/");
+        }
     }
 
 }

@@ -80,8 +80,11 @@
             </div>
              <div class="form-group row">
                  <div class="col-md-offset-2 col-md-10">
-                     <asp:CustomValidator ID="ValidateDates" runat="server"  ErrorMessage="PTO request dates provided already exist" 
-                         OnServerValidate="ValidateDates_ServerValidate" ControlToValidate="ptoFrom" CssClass="err"></asp:CustomValidator>
+                     <asp:CustomValidator ID="ValidateDates" runat="server"  ErrorMessage="PTO request dates provided already exist." 
+                         OnServerValidate="ValidateDates_ServerValidate" Display="Dynamic" ControlToValidate="ptoFrom" CssClass="err"></asp:CustomValidator>
+                     <asp:CustomValidator ID="ValidateWeekDay" Display="Dynamic" runat="server"  ErrorMessage="PTO request must start and end on a weekday." 
+                         OnServerValidate="ValidateWeekDay_ServerValidate" ControlToValidate="ptoFrom" CssClass="err"></asp:CustomValidator>
+
                 </div>
             </div>
             <div class="form-group row">
